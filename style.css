@@ -1,0 +1,146 @@
+@font-face {
+  font-family: "Segoe UI Regular";
+  font-style: normal;
+  font-weight: normal;
+  src: url("font/Segoe\ UI.woff");
+}
+
+@font-face {
+  font-family: "Segoe UI Italic";
+  font-style: normal;
+  font-weight: normal;
+  src: url("font/Segoe\ UI\ Italic.woff");
+}
+
+@font-face {
+  font-family: "Segoe UI Bold";
+  font-style: normal;
+  font-weight: normal;
+  src: url("font/Segoe\ UI\ Bold.woff");
+}
+
+@font-face {
+  font-family: "Segoe UI Bold Italic";
+  font-style: normal;
+  font-weight: normal;
+  src: url("font/Segoe\ UI\ Bold\ Italic.woff");
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+a,
+a:link,
+a:active,
+a:visited {
+  font-weight: 900;
+  font-size: 1.3vw;
+  font-style: underline;
+  text-decoration: underline;
+  color: #8c52ff;
+}
+
+.nav-link:hover {
+  color: #ffde59;
+  background-color: #8c52ff;
+}
+
+.boardgame{
+    background-color: #F1F1F1;
+    border-radius: 4.5vw;
+    width: 34vw;
+    height: 34vw;
+    display: grid;
+    column-gap: 20px;
+    row-gap: 20px;
+    grid-template-columns: auto auto auto;
+    padding: 20px 20px;
+}
+.boardgame-item-L{
+    background-color: #dcdcdc;
+    border-radius: 50%;
+    height: auto;
+    width: auto;
+    cursor: pointer;
+    position: relative;
+}
+.boardgame-item-block-L{
+    position: absolute;
+    background-color: #F1F1F1;
+    z-index: 0;
+    height: 70%;
+    width: 70%;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.boardgame-item-M{
+    background-color: #dcdcdc;
+    position: absolute;
+    border-radius: 50%;
+    cursor: pointer;
+    height: 87%;
+    width: 87%;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+.boardgame-item-block-M{
+    position: absolute;
+    background-color: #F1F1F1;
+    z-index: 2;
+    height: 60%;
+    width: 60%;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.boardgame-item-S{
+    background-color: #dcdcdc;
+    position: absolute;
+    border-radius: 50%;
+    cursor: pointer;
+    height: 75%;
+    width: 75%;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.piece-block{
+    background-color: #F1f1f1;
+    border-radius: 4.5vw;
+    width: auto;
+    height: calc((34vw - 5vw) - 1.5rem);
+    display: grid;
+    column-gap: 20px;
+    row-gap: 20px;
+    grid-template-columns: auto auto;
+    padding: 20px 55px;
+}
+.display-block{
+    background-color: #Ffde59;
+    border-radius: 80px;
+    width: auto;
+    height: 5vw;
+    color: #8c52ff;
+    font-weight: 900;
+    font-size: 2.25vw;
+    font-style: italic;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
