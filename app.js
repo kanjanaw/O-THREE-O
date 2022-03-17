@@ -1,14 +1,18 @@
-document.getElementById("L11").addEventListener("click", display)
-document.getElementById("M11").addEventListener("click", display2)
-document.getElementById("S11").addEventListener("click", display3)
+const bgPieces = document.querySelectorAll(".boardgame-pieces");
+bgPieces.forEach((bgPiece) => {
+    bgPiece.style.backgroundColor = 'rgb(220, 220, 220)'; // color must be in rgb(xxx, xxx, xxx) form only!
+    bgPiece.addEventListener("click", selectAndDeselect)
+});
 
-function display(event){
-    document.getElementById("L11").style.backgroundColor = '#19d4b8'
-}
-function display2(event){
-    document.getElementById("M11").style.backgroundColor = '#19d4b8'
-}
-function display3(event){
-    console.log('S11')
-    event.StopPropagation()
+function selectAndDeselect(event) {
+    // Piece in grey turn to player's color == player select this piece
+    if(event.currentTarget.style.backgroundColor == 'rgb(220, 220, 220)'){
+        this.style.backgroundColor = 'rgb(25, 212, 184)';
+        event.stopPropagation()
+
+    // Piece in player's color turn to grey == player deselect this piece
+    }else if(event.currentTarget.style.backgroundColor == 'rgb(25, 212, 184)'){
+        this.style.backgroundColor = 'rgb(220, 220, 220)';
+        event.stopPropagation()
+    }
 }
