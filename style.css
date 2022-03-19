@@ -32,7 +32,7 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6, .btn-game {
   font-family: "Segoe UI", Arial, sans-serif;
 }
 
@@ -55,13 +55,13 @@ a:visited {
 .boardgame{
     background-color: #F1F1F1;
     border-radius: 4.5vw;
-    width: 34vw;
-    height: 34vw;
+    width: 37vw;
+    height: 37vw;
     display: grid;
-    column-gap: 20px;
-    row-gap: 20px;
+    column-gap: 1vw;
+    row-gap: 1vw;
     grid-template-columns: auto auto auto;
-    padding: 20px 20px;
+    padding: 2vw;
 }
 
 .boardgame-pieces{
@@ -121,18 +121,18 @@ a:visited {
 .piece-block{
     background-color: #F1f1f1;
     border-radius: 4.5vw;
-    width: auto;
-    height: calc((34vw - 5vw) - 1.5rem);
+    width: 26vw;
+    height: 26vw;
     display: grid;
-    column-gap: 20px;
-    row-gap: 20px;
+    column-gap: 1vw;
+    row-gap: 1vw;
     grid-template-columns: auto auto;
-    padding: 20px 55px;
+    padding: 2vw;
 }
 .display-block{
     background-color: #Ffde59;
     border-radius: 80px;
-    width: auto;
+    width: 26vw;
     height: 5vw;
     color: #8c52ff;
     font-weight: 900;
@@ -141,4 +141,21 @@ a:visited {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.btn-game {
+  background-color: #8c52ff;
+  color: #Ffde59;
+  height: calc(37vw - 7.5vw - 26vw);
+  border-radius: 50px;
+  font-weight: 900;
+  font-size: 1.4vw;
+  border: none;
+  padding: 0vw 2vw;
+}
+
+.player-pieces{
+  background-color: #dcdcdc;
+  border-radius: 50%;
+  cursor: pointer;
 }
