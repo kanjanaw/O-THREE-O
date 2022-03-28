@@ -55,49 +55,22 @@ function selectAndDeselect(event) {
 }
 
 function selectPlayerPiece(size) {
-  // playerPieces.forEach((playerPiece) => {
-  // const playerPieceID = playerPiece.getAttribute('id')
-  // const playerPieceSize = playerPieceID[playerPieceID.length - 3]
+  const playerPiecesClass = document.getElementsByClassName('player-pieces')
 
-  // if(playerPiece.style.backgroundColor == "rgb(25, 212, 184)" && size == playerPieceSize) {
-  //   console.log(playerPieceSize);
-  // playerPiece.style.backgroundColor = "rgb(220, 220, 220)";
-  // }
+  for (let i = 0; i < 9; i++) {
+    const playerPieceClassID = playerPiecesClass[i].getAttribute('id')
+    const playerPieceClassSize = playerPieceClassID[playerPieceClassID.length - 3]
 
-  //  switch (size == playerPieceSize){
-  //     case playerPiece.style.backgroundColor == "rgb(25, 212, 184)" && size == playerPieceSize:
-  //       console.log(playerPieceSize);
-  //       break;
-  //     case playerPiece.style.backgroundColor == "rgb(220, 220, 220)" && size == playerPieceSize:
-  //       console.log(playerPieceSize);
-  //       break;
-  //  }
-  // else if(playerPiece.style.backgroundColor == "rgb(220, 220, 220)" && size == playerPieceSize){
-  //   console.log(playerPieceSize);
-  //   // playerPiece.style.backgroundColor = "rgb(25, 212, 184)";
-  // }
-
-  // const playerPieceClass = document.getElementsByClassName("player-pieces");
-  // var playerPieceSize;
-
-  // for (let i = 0; i < 9; i++) {
-  //   var playerPieceSize = playerPieceClass[i].getAttribute('id')[playerPieceClass[i].getAttribute('id').length - 3]
-
-  //   if (playerPieceClass[i].style.backgroundColor == "rgb(25, 212, 184)" && size == playerPieceSize) {
-  //     playerPieceClass[i].style.backgroundColor = "rgb(220, 220, 220)";
-  //     console.log(playerPieceSize, countPieces);
-  //     break;
-  //   }
-
-  // else if (playerPieceClass[i].style.backgroundColor == "rgb(220, 220, 220)" && size == playerPieceSize){
-  //   playerPieceClass[i].style.backgroundColor = "rgb(25, 212, 184)";
-  //   break;
-  // }
-  //else {
-  //   alert();
-  //   break;
-  // }
-  console.log(countPiecesL, countPiecesM, countPiecesS);
+    if ( size == playerPieceClassSize && playerPiecesClass[i].style.backgroundColor == "rgb(25, 212, 184)" && event.currentTarget.style.backgroundColor == 'rgb(25, 212, 184)') {
+      playerPiecesClass[i].style.backgroundColor = "rgb(220, 220, 220)";
+      break;
+   } 
+    else if ( size == playerPieceClassSize && playerPiecesClass[i].style.backgroundColor == "rgb(220, 220, 220)" && event.currentTarget.style.backgroundColor == 'rgb(220, 220, 220)') {
+      playerPiecesClass[i].style.backgroundColor = "rgb(25, 212, 184)";
+      break;
+  } 
+  }
+ 
 }
 
 // const logoutItems = document.querySelectorAll(".logged-out");
