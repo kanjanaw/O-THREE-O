@@ -97,7 +97,6 @@ function selectPlayerPiece(size) {
       event.currentTarget.style.backgroundColor == playerColor &&
       countPiecesL <= 3 && countPiecesM <= 3 && countPiecesS <= 3) {
       playerPieces[i].style.backgroundColor = bgPiecesColor;
-      console.log(countPiecesL, countPiecesM, countPiecesS, ' if 1')
       break;
     }
     // change bg to player color
@@ -105,10 +104,8 @@ function selectPlayerPiece(size) {
       event.currentTarget.style.backgroundColor == bgPiecesColor &&
       countPiecesL <= 3 && countPiecesM <= 3 && countPiecesS <= 3) {
       playerPieces[i].style.backgroundColor = playerColor;
-      console.log(countPiecesL, countPiecesM, countPiecesS, ' if 2')
       break;
     } else if (countPiecesL > 3 || countPiecesM > 3 || countPiecesS > 3) {
-      console.log(countPiecesL, countPiecesM, countPiecesS, ' if 3')
       break;
     } else {
       continue
