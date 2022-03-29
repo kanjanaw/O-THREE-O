@@ -159,3 +159,16 @@ a:visited {
   border-radius: 50%;
   cursor: pointer;
 }
+
+.block-circle-color{
+  margin: 1vw;
+  padding: 5vw;
+  border-radius: 50%;
+  width: auto;
+  height: auto;
+  border: 5px solid black;
+}
+
+.block-circle-color:hover, .block-circle-color:active, .block-circle-color:focus{
+  outline: 15px solid rgba(172, 172, 172, 0.35);
+}

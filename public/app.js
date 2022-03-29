@@ -1,10 +1,33 @@
 const bgPiecesColor = 'rgb(220, 220, 220)' // color must be in rgb(xxx, xxx, xxx) form only!
-const playerColor = 'rgb(25, 212, 184)'
+const setOfColor = ['rgb(109, 187, 255)', 'rgb(25, 212, 184)', 'rgb(255, 222, 89)', 'rgb(255, 109, 109)']
+var playerColor;
 
 const playerPieces = document.querySelectorAll(".player-pieces");
-playerPieces.forEach(
-  (playerPiece) => (playerPiece.style.backgroundColor = playerColor)
-);
+const circlesColor = document.querySelectorAll(".block-circle-color");
+
+function setColor(color){
+  playerPieces.forEach((playerPiece) => {
+    playerPiece.style.backgroundColor = setOfColor[color];
+    playerColor = setOfColor[color]
+  })
+  circlesColor.forEach((circleColor) => {circleColor.style.outline = 'none';})
+  event.currentTarget.style.outline = '15px solid rgba(172, 172, 172, .6)'
+}
+
+const selectConItems = document.querySelectorAll(".select-color");
+const deselectConItems = document.querySelectorAll(".deselect-color");
+
+selectConItems.forEach((item) => (item.style.display = 'none'))
+deselectConItems.forEach((item) => (item.style.display = 'block'))
+
+function goToBoard(){
+  if(playerColor != undefined){
+    selectConItems.forEach((item) => (item.style.display = 'block'))
+    deselectConItems.forEach((item) => (item.style.display = 'none'))
+  }else {
+    alert("plz pick your color")
+  }
+}
 
 const bgPieces = document.querySelectorAll(".boardgame-pieces");
 bgPieces.forEach((bgPiece) => {
@@ -33,7 +56,7 @@ function selectAndDeselect(event) {
       countPiecesS += 1;
       this.style.backgroundColor = playerColor;
     } else {
-      alert("Your pieces is empty.");
+      alert("Your "+ selectPieceSize +" pieces is empty.");
     }
 
     selectPlayerPiece(selectPieceSize);
@@ -57,22 +80,25 @@ function selectAndDeselect(event) {
   }
 }
 
-
+// change color pieces from player side
 function selectPlayerPiece(size) {
-  const playerPiecesClass = document.getElementsByClassName('player-pieces')
-
   for (let i = 0; i < 9; i++) {
-    const playerPieceClassID = playerPiecesClass[i].getAttribute('id')
-    const playerPieceClassSize = playerPieceClassID[playerPieceClassID.length - 3]
-
-    if (size == playerPieceClassSize && playerPiecesClass[i].style.backgroundColor == playerColor && event.currentTarget.style.backgroundColor == playerColor) {
-      playerPiecesClass[i].style.backgroundColor = bgPiecesColor;
-      break;
-    } else if (size == playerPieceClassSize && playerPiecesClass[i].style.backgroundColor == bgPiecesColor && event.currentTarget.style.backgroundColor == bgPiecesColor && countPiecesL < 3 && countPiecesM < 3 && countPiecesS < 3) {
-      playerPiecesClass[i].style.backgroundColor = playerColor;
-      break;
+    const playerPiecesID = playerPieces[i].getAttribute('id')
+    const playerPiecesSize = playerPiecesID[playerPiecesID.length - 3]
+    // change player color to bg
+    if (size == playerPiecesSize && playerPieces[i].style.backgroundColor == playerColor && 
+      event.currentTarget.style.backgroundColor == playerColor) {
+        playerPieces[i].style.backgroundColor = bgPiecesColor;
+        break;
+    } 
+    // change bg to player color
+    else if (size == playerPiecesSize && playerPieces[i].style.backgroundColor == bgPiecesColor && 
+      event.currentTarget.style.backgroundColor == bgPiecesColor && 
+      countPiecesL < 3 && countPiecesM < 3 && countPiecesS < 3) {
+        playerPieces[i].style.backgroundColor = playerColor;
+        break;
     } else if (countPiecesL > 3 || countPiecesM > 3 || countPiecesS > 3) {
-      break;
+        break;
     }
   }
 }
