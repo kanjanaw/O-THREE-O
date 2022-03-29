@@ -5,12 +5,13 @@ var playerColor;
 const playerPieces = document.querySelectorAll(".player-pieces");
 const circlesColor = document.querySelectorAll(".block-circle-color");
 
-function setColor(color){
+//set player color pieces
+function setColor(color) {
   playerPieces.forEach((playerPiece) => {
     playerPiece.style.backgroundColor = setOfColor[color];
     playerColor = setOfColor[color]
   })
-  circlesColor.forEach((circleColor) => {circleColor.style.outline = 'none';})
+  circlesColor.forEach((circleColor) => { circleColor.style.outline = 'none'; })
   event.currentTarget.style.outline = '15px solid rgba(172, 172, 172, .6)'
 }
 
@@ -20,18 +21,19 @@ const deselectConItems = document.querySelectorAll(".deselect-color");
 selectConItems.forEach((item) => (item.style.display = 'none'))
 deselectConItems.forEach((item) => (item.style.display = 'block'))
 
-function goToBoard(){
-  if(playerColor != undefined){
+//hide pick color page and jump to boardgame page
+function goToBoard() {
+  if (playerColor != undefined) {
     selectConItems.forEach((item) => (item.style.display = 'block'))
     deselectConItems.forEach((item) => (item.style.display = 'none'))
-  }else {
+  } else {
     alert("plz pick your color")
   }
 }
 
 const bgPieces = document.querySelectorAll(".boardgame-pieces");
 bgPieces.forEach((bgPiece) => {
-  bgPiece.style.backgroundColor = bgPiecesColor; 
+  bgPiece.style.backgroundColor = bgPiecesColor;
   bgPiece.addEventListener("click", selectAndDeselect);
 });
 
@@ -40,6 +42,7 @@ var selectPieceSize,
   countPiecesM = 0,
   countPiecesS = 0;
 
+// player select & deselect on boardgame  
 function selectAndDeselect(event) {
   const pieceSelect = event.currentTarget.getAttribute("id");
   selectPieceSize = pieceSelect[pieceSelect.length - 3];
@@ -56,7 +59,7 @@ function selectAndDeselect(event) {
       countPiecesS += 1;
       this.style.backgroundColor = playerColor;
     } else {
-      alert("Your "+ selectPieceSize +" pieces is empty.");
+      alert("Your " + selectPieceSize + " pieces is empty.");
     }
 
     selectPlayerPiece(selectPieceSize);
@@ -74,11 +77,12 @@ function selectAndDeselect(event) {
     } else if (selectPieceSize == "S") {
       countPiecesS -= 1;
       this.style.backgroundColor = bgPiecesColor;
-    } 
+    }
     selectPlayerPiece(selectPieceSize);
     event.stopPropagation();
   }
 }
+
 
 // change color pieces from player side
 function selectPlayerPiece(size) {
@@ -86,22 +90,23 @@ function selectPlayerPiece(size) {
     const playerPiecesID = playerPieces[i].getAttribute('id')
     const playerPiecesSize = playerPiecesID[playerPiecesID.length - 3]
     // change player color to bg
-    if (size == playerPiecesSize && playerPieces[i].style.backgroundColor == playerColor && 
+    if (size == playerPiecesSize && playerPieces[i].style.backgroundColor == playerColor &&
       event.currentTarget.style.backgroundColor == playerColor) {
-        playerPieces[i].style.backgroundColor = bgPiecesColor;
-        break;
-    } 
+      playerPieces[i].style.backgroundColor = bgPiecesColor;
+      break;
+    }
     // change bg to player color
-    else if (size == playerPiecesSize && playerPieces[i].style.backgroundColor == bgPiecesColor && 
-      event.currentTarget.style.backgroundColor == bgPiecesColor && 
+    else if (size == playerPiecesSize && playerPieces[i].style.backgroundColor == bgPiecesColor &&
+      event.currentTarget.style.backgroundColor == bgPiecesColor &&
       countPiecesL < 3 && countPiecesM < 3 && countPiecesS < 3) {
-        playerPieces[i].style.backgroundColor = playerColor;
-        break;
+      playerPieces[i].style.backgroundColor = playerColor;
+      break;
     } else if (countPiecesL > 3 || countPiecesM > 3 || countPiecesS > 3) {
-        break;
+      break;
     }
   }
 }
+
 
 // const logoutItems = document.querySelectorAll(".logged-out");
 const loginItems = document.querySelectorAll(".logged-in");
