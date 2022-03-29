@@ -48,21 +48,22 @@ function selectAndDeselect(event) {
   selectPieceSize = pieceSelect[pieceSelect.length - 3];
 
   // Piece in grey turn to player's color == player select this piece
-  if (event.currentTarget.style.backgroundColor == bgPiecesColor) {
+ if (event.currentTarget.style.backgroundColor == bgPiecesColor) {
     if (selectPieceSize == "L" && countPiecesL < 3) {
       countPiecesL += 1;
       this.style.backgroundColor = playerColor;
+      selectPlayerPiece(selectPieceSize);
     } else if (selectPieceSize == "M" && countPiecesM < 3) {
       countPiecesM += 1;
       this.style.backgroundColor = playerColor;
+      selectPlayerPiece(selectPieceSize);
     } else if (selectPieceSize == "S" && countPiecesS < 3) {
       countPiecesS += 1;
       this.style.backgroundColor = playerColor;
+      selectPlayerPiece(selectPieceSize);
     } else {
       alert("Your " + selectPieceSize + " pieces is empty.");
-    }
-
-    selectPlayerPiece(selectPieceSize);
+    }  
     event.stopPropagation();
     // checkWinner()
 
@@ -71,14 +72,16 @@ function selectAndDeselect(event) {
     if (selectPieceSize == "L") {
       countPiecesL -= 1;
       this.style.backgroundColor = bgPiecesColor;
+      selectPlayerPiece(selectPieceSize);
     } else if (selectPieceSize == "M") {
       countPiecesM -= 1;
       this.style.backgroundColor = bgPiecesColor;
+      selectPlayerPiece(selectPieceSize);
     } else if (selectPieceSize == "S") {
       countPiecesS -= 1;
       this.style.backgroundColor = bgPiecesColor;
-    }
-    selectPlayerPiece(selectPieceSize);
+      selectPlayerPiece(selectPieceSize);
+    } 
     event.stopPropagation();
   }
 }
@@ -91,18 +94,24 @@ function selectPlayerPiece(size) {
     const playerPiecesSize = playerPiecesID[playerPiecesID.length - 3]
     // change player color to bg
     if (size == playerPiecesSize && playerPieces[i].style.backgroundColor == playerColor &&
-      event.currentTarget.style.backgroundColor == playerColor) {
+      event.currentTarget.style.backgroundColor == playerColor &&
+      countPiecesL <= 3 && countPiecesM <= 3 && countPiecesS <= 3) {
       playerPieces[i].style.backgroundColor = bgPiecesColor;
+      console.log(countPiecesL, countPiecesM, countPiecesS, ' if 1')
       break;
     }
     // change bg to player color
     else if (size == playerPiecesSize && playerPieces[i].style.backgroundColor == bgPiecesColor &&
       event.currentTarget.style.backgroundColor == bgPiecesColor &&
-      countPiecesL < 3 && countPiecesM < 3 && countPiecesS < 3) {
+      countPiecesL <= 3 && countPiecesM <= 3 && countPiecesS <= 3) {
       playerPieces[i].style.backgroundColor = playerColor;
+      console.log(countPiecesL, countPiecesM, countPiecesS, ' if 2')
       break;
     } else if (countPiecesL > 3 || countPiecesM > 3 || countPiecesS > 3) {
+      console.log(countPiecesL, countPiecesM, countPiecesS, ' if 3')
       break;
+    } else {
+      continue
     }
   }
 }
