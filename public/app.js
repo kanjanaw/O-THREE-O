@@ -1,6 +1,6 @@
-firebase.auth().onAuthStateChanged((user) => {
-  console.log("User: ", user);
-});
+// firebase.auth().onAuthStateChanged((user) => {
+//   console.log("User: ", user);
+// });
 const ref = firebase.database().ref("Game");
 
 const bgPiecesColor = "rgb(220, 220, 220)"; // color must be in rgb(xxx, xxx, xxx) form only!
@@ -121,9 +121,11 @@ function done() {
     if (piece.length > 1) {
       alert("Select only one piece!!!");
     } else {
+      document.getElementById(piece[0]).removeEventListener("click", selectAndDeselect);
       ref.child("player-1").push({
         chesse: piece.pop(),
       });
+      
       alert("DONE SUCCESS");
     }
   } else {
