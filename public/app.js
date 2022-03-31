@@ -1,6 +1,18 @@
-const bgPiecesColor = 'rgb(220, 220, 220)' // color must be in rgb(xxx, xxx, xxx) form only!
-const setOfColor = ['rgb(109, 187, 255)', 'rgb(25, 212, 184)', 'rgb(255, 222, 89)', 'rgb(255, 109, 109)']
+firebase.auth().onAuthStateChanged((user) => {
+  console.log("User: ", user);
+});
+const ref = firebase.database().ref("Game");
+
+const bgPiecesColor = "rgb(220, 220, 220)"; // color must be in rgb(xxx, xxx, xxx) form only!
+const setOfColor = [
+  "rgb(109, 187, 255)",
+  "rgb(25, 212, 184)",
+  "rgb(255, 222, 89)",
+  "rgb(255, 109, 109)",
+];
 var playerColor;
+
+let piece = [];
 
 const playerPieces = document.querySelectorAll(".player-pieces");
 const circlesColor = document.querySelectorAll(".block-circle-color");
@@ -9,25 +21,29 @@ const circlesColor = document.querySelectorAll(".block-circle-color");
 function setColor(color) {
   playerPieces.forEach((playerPiece) => {
     playerPiece.style.backgroundColor = setOfColor[color];
-    playerColor = setOfColor[color]
-  })
-  circlesColor.forEach((circleColor) => { circleColor.style.outline = 'none'; })
-  event.currentTarget.style.outline = '15px solid rgba(172, 172, 172, .6)'
+    playerColor = setOfColor[color];
+  });
+  circlesColor.forEach((circleColor) => {
+    circleColor.style.outline = "none";
+  });
+  event.currentTarget.style.outline = "15px solid rgba(172, 172, 172, .6)";
 }
 
 const selectConItems = document.querySelectorAll(".select-color");
 const deselectConItems = document.querySelectorAll(".deselect-color");
 
-selectConItems.forEach((item) => (item.style.display = 'none'))
-deselectConItems.forEach((item) => (item.style.display = 'block'))
+selectConItems.forEach((item) => (item.style.display = "none"));
+deselectConItems.forEach((item) => (item.style.display = "block"));
 
 //hide pick color page and jump to boardgame page
 function goToBoard() {
   if (playerColor != undefined) {
-    selectConItems.forEach((item) => (item.style.display = 'block'))
-    deselectConItems.forEach((item) => (item.style.display = 'none'))
+    selectConItems.forEach((item) => (item.style.display = "block"));
+    deselectConItems.forEach((item) => (item.style.display = "none"));
+    const btnDone = document.querySelector("#btn-done");
+    btnDone.addEventListener("click", done);
   } else {
-    alert("plz pick your color")
+    alert("plz pick your color");
   }
 }
 
@@ -42,28 +58,31 @@ var selectPieceSize,
   countPiecesM = 0,
   countPiecesS = 0;
 
-// player select & deselect on boardgame  
+// player select & deselect on boardgame
 function selectAndDeselect(event) {
   const pieceSelect = event.currentTarget.getAttribute("id");
   selectPieceSize = pieceSelect[pieceSelect.length - 3];
 
   // Piece in grey turn to player's color == player select this piece
- if (event.currentTarget.style.backgroundColor == bgPiecesColor) {
+  if (event.currentTarget.style.backgroundColor == bgPiecesColor) {
     if (selectPieceSize == "L" && countPiecesL < 3) {
       countPiecesL += 1;
+      piece.push(pieceSelect);
       this.style.backgroundColor = playerColor;
       selectPlayerPiece(selectPieceSize);
     } else if (selectPieceSize == "M" && countPiecesM < 3) {
       countPiecesM += 1;
+      piece.push(pieceSelect);
       this.style.backgroundColor = playerColor;
       selectPlayerPiece(selectPieceSize);
     } else if (selectPieceSize == "S" && countPiecesS < 3) {
       countPiecesS += 1;
+      piece.push(pieceSelect);
       this.style.backgroundColor = playerColor;
       selectPlayerPiece(selectPieceSize);
     } else {
       alert("Your " + selectPieceSize + " pieces is empty.");
-    }  
+    }
     event.stopPropagation();
     // checkWinner()
 
@@ -71,48 +90,82 @@ function selectAndDeselect(event) {
   } else if (event.currentTarget.style.backgroundColor == playerColor) {
     if (selectPieceSize == "L") {
       countPiecesL -= 1;
+      piece = piece.filter((item) => item !== pieceSelect);
       this.style.backgroundColor = bgPiecesColor;
       selectPlayerPiece(selectPieceSize);
     } else if (selectPieceSize == "M") {
       countPiecesM -= 1;
+      piece = piece.filter((item) => item !== pieceSelect);
       this.style.backgroundColor = bgPiecesColor;
       selectPlayerPiece(selectPieceSize);
     } else if (selectPieceSize == "S") {
       countPiecesS -= 1;
+      piece = piece.filter((item) => item !== pieceSelect);
       this.style.backgroundColor = bgPiecesColor;
       selectPlayerPiece(selectPieceSize);
-    } 
+    }
     event.stopPropagation();
   }
 }
 
+ref.on("value", (snapshot) => {
+  getGameInfo(snapshot);
+});
+
+function getGameInfo(snapshot) {
+  snapshot.forEach((data) => {});
+}
+
+function done() {
+  if (piece.length > 0) {
+    if (piece.length > 1) {
+      alert("Select only one piece!!!");
+    } else {
+      ref.child("player-1").push({
+        chesse: piece.pop(),
+      });
+      alert("DONE SUCCESS");
+    }
+  } else {
+    alert("plz select one piece");
+  }
+}
 
 // change color pieces from player side
 function selectPlayerPiece(size) {
   for (let i = 0; i < 9; i++) {
-    const playerPiecesID = playerPieces[i].getAttribute('id')
-    const playerPiecesSize = playerPiecesID[playerPiecesID.length - 3]
+    const playerPiecesID = playerPieces[i].getAttribute("id");
+    const playerPiecesSize = playerPiecesID[playerPiecesID.length - 3];
     // change player color to bg
-    if (size == playerPiecesSize && playerPieces[i].style.backgroundColor == playerColor &&
+    if (
+      size == playerPiecesSize &&
+      playerPieces[i].style.backgroundColor == playerColor &&
       event.currentTarget.style.backgroundColor == playerColor &&
-      countPiecesL <= 3 && countPiecesM <= 3 && countPiecesS <= 3) {
+      countPiecesL <= 3 &&
+      countPiecesM <= 3 &&
+      countPiecesS <= 3
+    ) {
       playerPieces[i].style.backgroundColor = bgPiecesColor;
       break;
     }
     // change bg to player color
-    else if (size == playerPiecesSize && playerPieces[i].style.backgroundColor == bgPiecesColor &&
+    else if (
+      size == playerPiecesSize &&
+      playerPieces[i].style.backgroundColor == bgPiecesColor &&
       event.currentTarget.style.backgroundColor == bgPiecesColor &&
-      countPiecesL <= 3 && countPiecesM <= 3 && countPiecesS <= 3) {
+      countPiecesL <= 3 &&
+      countPiecesM <= 3 &&
+      countPiecesS <= 3
+    ) {
       playerPieces[i].style.backgroundColor = playerColor;
       break;
     } else if (countPiecesL > 3 || countPiecesM > 3 || countPiecesS > 3) {
       break;
     } else {
-      continue
+      continue;
     }
   }
 }
-
 
 // const logoutItems = document.querySelectorAll(".logged-out");
 const loginItems = document.querySelectorAll(".logged-in");
@@ -128,7 +181,6 @@ function setupUI(user) {
 }
 
 ///////////////////////////////FIX CODE////////////////////
-
 
 // function checkWinner() {
 //   const L11 = document.getElementById(".B-L11");
@@ -348,7 +400,6 @@ function setupUI(user) {
 //     }
 //   }
 // }
-
 
 // function WinFix() {
 
