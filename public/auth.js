@@ -57,7 +57,7 @@ const btnCancel = document.querySelectorAll('.btn-cancel').forEach(btn =>{
 
 firebase.auth().onAuthStateChanged((user)=>{
     console.log('User: ', user)
-    getList(user);
+    // getList(user);
     setupUI(user);
 })
 

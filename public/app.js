@@ -33,7 +33,7 @@ const selectConItems = document.querySelectorAll(".select-color");
 const deselectConItems = document.querySelectorAll(".deselect-color");
 
 selectConItems.forEach((item) => (item.style.display = "none"));
-deselectConItems.forEach((item) => (item.style.display = "block"));
+// deselectConItems.forEach((item) => (item.style.display = "none"));
 
 //hide pick color page and jump to boardgame page
 function goToBoard() {
@@ -169,17 +169,19 @@ function selectPlayerPiece(size) {
   }
 }
 
-// const logoutItems = document.querySelectorAll(".logged-out");
+const logoutItems = document.querySelectorAll(".logged-out");
 const loginItems = document.querySelectorAll(".logged-in");
 
-function setupUI(user) {
-  if (user) {
-    loginItems.forEach((item) => (item.style.display = "inline-block"));
-    // logoutItems.forEach(item => item.style.display = "none");
-  } else {
-    loginItems.forEach((item) => (item.style.display = "none"));
-    // logoutItems.forEach(item => item.style.display = "inline-block");
-  }
+function setupUI(user){
+    if (user) {
+        loginItems.forEach(item => item.style.display = 'block');
+        logoutItems.forEach(item => item.style.display = 'none');
+        console.log("user login show")
+    } else {
+        loginItems.forEach(item => item.style.display = 'none');
+        logoutItems.forEach(item => item.style.display = 'block');
+        console.log("user logout show")
+    }
 }
 
 ///////////////////////////////FIX CODE////////////////////

@@ -32,7 +32,7 @@ h2,
 h3,
 h4,
 h5,
-h6, .btn-game {
+h6, .btn-game .btn-index .btn-signup {
   font-family: "Segoe UI", Arial, sans-serif;
 }
 
@@ -55,7 +55,7 @@ a:visited {
 .boardgame{
     background-color: #F1F1F1;
     border-radius: 4.5vw;
-    width: 37vw;
+    width: 100%;
     height: 37vw;
     display: grid;
     column-gap: 1vw;
@@ -121,7 +121,7 @@ a:visited {
 .piece-block{
     background-color: #F1f1f1;
     border-radius: 4.5vw;
-    width: 26vw;
+    width: 100%;
     height: 26vw;
     display: grid;
     column-gap: 1vw;
@@ -132,7 +132,7 @@ a:visited {
 .display-block{
     background-color: #Ffde59;
     border-radius: 80px;
-    width: 26vw;
+    width: 100%;
     height: 5vw;
     color: #8c52ff;
     font-weight: 900;
@@ -146,6 +146,17 @@ a:visited {
 .btn-game {
   background-color: #8c52ff;
   color: #Ffde59;
+  height: calc(37vw - 7.5vw - 26vw);
+  border-radius: 50px;
+  font-weight: 900;
+  font-size: 1.4vw;
+  border: none;
+  padding: 0vw 2vw;
+}
+
+.btn-index{
+  background-color: #Ffde59;
+  color: black;
   height: calc(37vw - 7.5vw - 26vw);
   border-radius: 50px;
   font-weight: 900;

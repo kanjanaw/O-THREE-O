@@ -31,92 +31,281 @@
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-analytics.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+
+  <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css'>
+  <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
 </head>
 
 <body>
-  <div class="container d-flex flex-column align-items-center justify-content-center" style="width: 70vw; height: 75%;">
-    <img class="img-fluid" src="img/logo.jpg" alt="" width="25%" height="25%" />
+  <div class="container logged-out" style="width: 70vw;">
+    <div class="d-flex flex-column align-items-center justify-content-center" style="height: 80%;">
+      <img class="img-fluid" src="img/logo.jpg" alt="" width="25%" height="25%" />
 
-    <div class="row text-center " style="width: 70vw">
+      <div class="row text-center " style="width: 70vw">
 
-      <div class="col-6 p-3 d-flex flex-column align-items-center" style="border-right: solid 1px lightgrey">
-        <h2 class="mb-5">Play as anonymous</h2>
-        <input type="text" class="form-control form-control-lg mb-4" id="inputusername" placeholder="ENTER YOUR NAME"
-          style="width: 20vw;" />
-        <button type="button" class="btn btn-warning btn-lg" style="width: 20vw;">
-          LET'S GO!
-        </button>
+        <div class="col-6 p-3 d-flex flex-column align-items-center" style="border-right: solid 1px lightgrey">
+          <h2 class="mb-5">Play as anonymous</h2>
+          <input type="text" class="form-control form-control-lg mb-4" id="inputusername" placeholder="ENTER YOUR NAME"
+            style="width: 20vw;" />
+          <button type="button" class="btn-index" style="width: 20vw;">
+            LET'S GO!
+          </button>
+        </div>
+
+        <div class="col-6 p-3">
+          <h2 class="mb-5">Play with your account</h2>
+          <button type="button" class="btn-index" style="width: 20vw;" data-bs-toggle="modal"
+            data-bs-target="#modal-login">
+            LOGIN
+          </button>
+          <p class="mt-3 mb-4">or</p>
+          <button type="button" class="btn-game" style="width: 20vw; background-color: rgb(44, 44, 44);"
+            data-bs-toggle="modal" data-bs-target="#modal-signup">
+            SIGN UP
+          </button>
+        </div>
+
       </div>
 
-      <div class="col-6 p-3">
-        <h2 class="mb-5">Play with your account</h2>
-        <button type="button" class="btn btn-warning btn-lg" style="width: 20vw;" data-bs-toggle="modal"
-          data-bs-target="#modal-login">
-          LOGIN
-        </button>
-        <p class="mt-3 mb-4">or</p>
-        <button type="button" class="btn btn-dark btn-lg" style="width: 20vw;" data-bs-toggle="modal"
-          data-bs-target="#modal-signup">
-          SIGN UP
-        </button>
-      </div>
-
-    </div>
-
-    <div class="modal" id="modal-login" tabindex="-1">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Login</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="modal" id="modal-login" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Login</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="" id="login-form" class="">
+              <div class="modal-body mb-3">
+                <input type="email" id="input-email-login" class="form-control" placeholder="Email" aria-label="title"
+                  aria-describedby="basic-addon1" required />
+                <br />
+                <input type="password" id="input-password-login" class="form-control" placeholder="Password"
+                  aria-label="title" aria-describedby="basic-addon1" required />
+                <p id="feedback-msg-login"></p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-cancel" data-bs-dismiss="modal">
+                  Cancel
+                </button>
+                <button type="submit" class="btn btn-primary">Login</button>
+              </div>
+            </form>
           </div>
-          <form action="" id="login-form" class="">
-            <div class="modal-body mb-3">
-              <input type="email" id="input-email-login" class="form-control" placeholder="Email" aria-label="title"
-                aria-describedby="basic-addon1" required />
-              <br />
-              <input type="password" id="input-password-login" class="form-control" placeholder="Password"
-                aria-label="title" aria-describedby="basic-addon1" required />
-              <p id="feedback-msg-login"></p>
+        </div>
+      </div>
+
+      <div class="modal" id="modal-signup" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Sign up</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary btn-cancel" data-bs-dismiss="modal">
-                Cancel
-              </button>
-              <button type="submit" class="btn btn-primary">Login</button>
-            </div>
-          </form>
+            <form action="" id="signup-form" class="">
+              <div class="modal-body mb-3">
+                <input type="email" id="input-email-signup" class="form-control" placeholder="Email" aria-label="title"
+                  aria-describedby="basic-addon1" required />
+                <br />
+                <input type="password" id="input-password-signup" class="form-control" placeholder="Password"
+                  aria-label="title" aria-describedby="basic-addon1" required />
+                <p id="feedback-msg-signup"></p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-cancel" data-bs-dismiss="modal">
+                  Cancel
+                </button>
+                <button type="submit" class="btn btn-primary">Sign up</button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="modal" id="modal-signup" tabindex="-1">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Sign up</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  <div class="container text-center deselect-color logged-in" style="width: 70vw;">
+    <div class="d-flex flex-column align-items-center justify-content-center" style="height: 95%;">
+      <h1 style="font-size: 3rem;">PICK YOUR COLOR</h1>
+      <div class="d-flex mt-3">
+        <button type="button" class="block-circle-color" style="background-color: rgb(109, 187, 255);"
+          onclick="setColor(0)"></button>
+        <button type="button" class="block-circle-color" style="background-color: rgb(25, 212, 184);"
+          onclick="setColor(1)"></button>
+      </div>
+      <div class="d-flex mb-4">
+        <button type="button" class="block-circle-color" style="background-color: rgb(255, 222, 89);"
+          onclick="setColor(2)"></button>
+        <button type="button" class="block-circle-color" style="background-color: rgb(255, 109, 109);"
+          onclick="setColor(3)"></button>
+      </div>
+      <button type="button" class="btn-game" style="width: 30%; background-color: rgb(44, 44, 44); " id="go-btn" onclick="goToBoard()">
+        GO
+      </button>
+    </div>
+  </div>
+
+  <div class="container select-color" style="width: 70vw;">
+   
+      <nav class="navbar p-0 d-flex align-items-end">
+        <a href="#">
+          <img class="img-fluid" src="img/logo.jpg" alt="" width="27%" height="27%" />
+        </a>
+        <ul class="nav justify-content-end mb-4">
+          <li class="nav-item align-items-end">
+            <a class="nav-link" aria-current="page" href="#">HOW TO PLAY</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">HELP</a>
+          </li>
+        </ul>
+      </nav>
+
+
+    <div class="row m-0 d-flex justify-content-between" style="width: 100%;">
+      <div class="p-0" style="width: 55%;">
+        <div class="boardgame">
+          <div class="boardgame-item-L boardgame-pieces" id="B-L11">
+            <div class="boardgame-item-block-L">
+              <div class="boardgame-item-M boardgame-pieces" id="B-M11">
+                <div class="boardgame-item-block-M">
+                  <div class="boardgame-item-S boardgame-pieces" id="B-S11"></div>
+                </div>
+              </div>
+            </div>
           </div>
-          <form action="" id="signup-form" class="">
-            <div class="modal-body mb-3">
-              <input type="email" id="input-email-signup" class="form-control" placeholder="Email" aria-label="title"
-                aria-describedby="basic-addon1" required />
-              <br />
-              <input type="password" id="input-password-signup" class="form-control" placeholder="Password"
-                aria-label="title" aria-describedby="basic-addon1" required />
-              <p id="feedback-msg-signup"></p>
+
+          <div class="boardgame-item-L boardgame-pieces" id="B-L12">
+            <div class="boardgame-item-block-L">
+              <div class="boardgame-item-M boardgame-pieces" id="B-M12">
+                <div class="boardgame-item-block-M">
+                  <div class="boardgame-item-S boardgame-pieces" id="B-S12"></div>
+                </div>
+              </div>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary btn-cancel" data-bs-dismiss="modal">
-                Cancel
-              </button>
-              <button type="submit" class="btn btn-primary">Sign up</button>
+          </div>
+
+          <div class="boardgame-item-L boardgame-pieces" id="B-L13">
+            <div class="boardgame-item-block-L">
+              <div class="boardgame-item-M boardgame-pieces" id="B-M13">
+                <div class="boardgame-item-block-M">
+                  <div class="boardgame-item-S boardgame-pieces" id="B-S13"></div>
+                </div>
+              </div>
             </div>
-          </form>
+          </div>
+
+          <div class="boardgame-item-L boardgame-pieces" id="B-L21">
+            <div class="boardgame-item-block-L">
+              <div class="boardgame-item-M boardgame-pieces" id="B-M21">
+                <div class="boardgame-item-block-M">
+                  <div class="boardgame-item-S boardgame-pieces" id="B-S21"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="boardgame-item-L boardgame-pieces" id="B-L22">
+            <div class="boardgame-item-block-L">
+              <div class="boardgame-item-M boardgame-pieces" id="B-M22">
+                <div class="boardgame-item-block-M">
+                  <div class="boardgame-item-S boardgame-pieces" id="B-S22"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="boardgame-item-L boardgame-pieces" id="B-L23">
+            <div class="boardgame-item-block-L">
+              <div class="boardgame-item-M boardgame-pieces" id="B-M23">
+                <div class="boardgame-item-block-M">
+                  <div class="boardgame-item-S boardgame-pieces" id="B-S23"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="boardgame-item-L boardgame-pieces" id="B-L31">
+            <div class="boardgame-item-block-L">
+              <div class="boardgame-item-M boardgame-pieces" id="B-M31">
+                <div class="boardgame-item-block-M">
+                  <div class="boardgame-item-S boardgame-pieces" id="B-S31"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="boardgame-item-L boardgame-pieces" id="B-L32">
+            <div class="boardgame-item-block-L">
+              <div class="boardgame-item-M boardgame-pieces" id="B-M32">
+                <div class="boardgame-item-block-M">
+                  <div class="boardgame-item-S boardgame-pieces" id="B-S32"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="boardgame-item-L boardgame-pieces" id="B-L33">
+            <div class="boardgame-item-block-L">
+              <div class="boardgame-item-M boardgame-pieces" id="B-M33">
+                <div class="boardgame-item-block-M">
+                  <div class="boardgame-item-S boardgame-pieces" id="B-S33"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
-    </div>
+      <div class="p-0" style="width: 40%;">
+        <div class="" style="margin-bottom: 1.25vw;">
+            <div class="display-block">
+              <p>User's Turn</p>
+            </div>
+        </div>
 
+        <div class="" style="margin-bottom: 1.25vw;">
+            <div class="piece-block" style="padding: 1.5vw;">
+              <div class="boardgame-item-L player-pieces" id="P-L11">
+                <div class="boardgame-item-block-L">
+                  <div class="boardgame-item-M player-pieces" id="P-M11">
+                    <div class="boardgame-item-block-M">
+                      <div class="boardgame-item-S player-pieces" id="P-S11"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="boardgame-item-L player-pieces" id="P-L12">
+                <div class="boardgame-item-block-L">
+                  <div class="boardgame-item-M player-pieces" id="P-M12">
+                    <div class="boardgame-item-block-M">
+                      <div class="boardgame-item-S player-pieces" id="P-S12"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="boardgame-item-L player-pieces" id="P-L13">
+                <div class="boardgame-item-block-L">
+                  <div class="boardgame-item-M player-pieces" id="P-M13">
+                    <div class="boardgame-item-block-M">
+                      <div class="boardgame-item-S player-pieces" id="P-S13"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <div class="d-flex">
+          <button type="button" class="btn-game" style="margin-right: 2%; width: 49%;"><i
+              class="fi fi-sr-refresh"></i> RESTART</button>
+          <button type="button" class="btn-game" id="btn-done" style="width: 49%"><i class="fi fi-br-check"></i>
+            DONE!</button>
+      </div>
+
+      </div>
+    </div>
   </div>
 </body>
 <script>
@@ -135,4 +324,5 @@
 </script>
 <script type="text/javascript" src="auth.js"></script>
 <script type="text/javascript" src="app.js"></script>
+
 </html>
