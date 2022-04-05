@@ -53,7 +53,7 @@ bgPieces.forEach((bgPiece) => {
   bgPiece.addEventListener("click", selectAndDeselect);
 });
 
-var selectPieceSize,
+var selectPieceSize, pieceSize
   countPiecesL = 0,
   countPiecesM = 0,
   countPiecesS = 0;
@@ -62,48 +62,46 @@ var selectPieceSize,
 function selectAndDeselect(event) {
   const pieceSelect = event.currentTarget.getAttribute("id");
   selectPieceSize = pieceSelect[pieceSelect.length - 3];
+  pieceSize = pieceSelect;
 
   // Piece in grey turn to player's color == player select this piece
   if (event.currentTarget.style.backgroundColor == bgPiecesColor) {
     if (selectPieceSize == "L" && countPiecesL < 3) {
       countPiecesL += 1;
-      piece.push(pieceSelect);
+      
       this.style.backgroundColor = playerColor;
       selectPlayerPiece(selectPieceSize);
     } else if (selectPieceSize == "M" && countPiecesM < 3) {
       countPiecesM += 1;
-      piece.push(pieceSelect);
       this.style.backgroundColor = playerColor;
       selectPlayerPiece(selectPieceSize);
     } else if (selectPieceSize == "S" && countPiecesS < 3) {
       countPiecesS += 1;
-      piece.push(pieceSelect);
       this.style.backgroundColor = playerColor;
       selectPlayerPiece(selectPieceSize);
     } else {
       alert("Your " + selectPieceSize + " pieces is empty.");
     }
     event.stopPropagation();
+    piece.push(pieceSelect);
     // checkWinner()
 
     // Piece in player's color turn to grey == player deselect this piece
   } else if (event.currentTarget.style.backgroundColor == playerColor) {
     if (selectPieceSize == "L") {
       countPiecesL -= 1;
-      piece = piece.filter((item) => item !== pieceSelect);
       this.style.backgroundColor = bgPiecesColor;
       selectPlayerPiece(selectPieceSize);
     } else if (selectPieceSize == "M") {
       countPiecesM -= 1;
-      piece = piece.filter((item) => item !== pieceSelect);
       this.style.backgroundColor = bgPiecesColor;
       selectPlayerPiece(selectPieceSize);
     } else if (selectPieceSize == "S") {
       countPiecesS -= 1;
-      piece = piece.filter((item) => item !== pieceSelect);
       this.style.backgroundColor = bgPiecesColor;
       selectPlayerPiece(selectPieceSize);
     }
+    piece = piece.filter((item) => item !== pieceSelect);
     event.stopPropagation();
   }
 }
@@ -121,9 +119,10 @@ function done() {
     if (piece.length > 1) {
       alert("Select only one piece!!!");
     } else {
-      document.getElementById(piece[0]).removeEventListener("click", selectAndDeselect);
+    document.getElementById(piece[0]).removeEventListener("click", selectAndDeselect);
       ref.child("player-1").push({
         chesse: piece.pop(),
+        color: playerColor
       });
       
       alert("DONE SUCCESS");
