@@ -37,17 +37,14 @@ h6, .btn-game .btn-index .btn-signup {
 }
 
 a,
-a:link,
-a:active,
-a:visited {
+a:link, a.nav-link {
   font-weight: 900;
   font-size: 1.3vw;
-  font-style: underline;
   text-decoration: underline;
   color: #8c52ff;
 }
 
-.nav-link:hover {
+.nav-link:hover, a.nav-link:hover{
   color: #ffde59;
   background-color: #8c52ff;
 }
