@@ -32,9 +32,10 @@ function setColor(color) {
     playerNames[i].style.color = setOfColor[i]
     if (playerNames[i].style.color == playerColor){
       playerNames[i].innerText = email
-      console.log('if true')
+      playerNames[i].style.opacity = 1
     }else{
       playerNames[i].innerText = "Anonymous"
+      playerNames[i].style.opacity = .3
     }
   }
 }

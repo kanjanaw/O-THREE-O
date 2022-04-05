@@ -30,15 +30,15 @@ const btnCancel = document.querySelectorAll('.btn-cancel').forEach(btn =>{
     })
 })
 
-firebase.auth().onAuthStateChanged((user)=>{
-    if(user){
-        console.log('User: ', user)
-        setupUI(user);
-    }
-   else{
-       console.log('uvavailble user')
-   }
-})
+// firebase.auth().onAuthStateChanged((user)=>{
+//     if(user){
+//         console.log('User: ', user)
+//         setupUI(user);
+//     }
+//    else{
+//        console.log('uvavailble user')
+//    }
+// })
 
 const btnLogout = document.getElementById("sign-out");
     btnLogout.addEventListener('click', ()=>{
@@ -72,7 +72,7 @@ function loginUser(event) {
         });
 };
 
-// firebase.auth().onAuthStateChanged((user) => {
-//     console.log('User: ', user);
-//     setupUI(user)
-// });
+firebase.auth().onAuthStateChanged((user) => {
+    console.log('User: ', user);
+    setupUI(user)
+});
