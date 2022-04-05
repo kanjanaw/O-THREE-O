@@ -1,6 +1,3 @@
-// firebase.auth().onAuthStateChanged((user) => {
-//   console.log("User: ", user);
-// });
 const ref = firebase.database().ref("Game");
 
 const bgPiecesColor = "rgb(220, 220, 220)"; // color must be in rgb(xxx, xxx, xxx) form only!
