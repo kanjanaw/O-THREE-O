@@ -10,7 +10,7 @@ const setOfColor = [
   "rgb(255, 222, 89)",
   "rgb(255, 109, 109)",
 ];
-var playerColor;
+var playerColor, closeModal;
 
 let piece = [];
 
@@ -27,13 +27,22 @@ function setColor(color) {
     circleColor.style.outline = "none";
   });
   event.currentTarget.style.outline = "15px solid rgba(172, 172, 172, .6)";
+
+  for(let i = 0; i < 4; i++){
+    playerNames[i].style.color = setOfColor[i]
+    if (playerNames[i].style.color == playerColor){
+      playerNames[i].innerText = email
+      console.log('if true')
+    }else{
+      playerNames[i].innerText = "Anonymous"
+    }
+  }
 }
 
 const selectConItems = document.querySelectorAll(".select-color");
 const deselectConItems = document.querySelectorAll(".deselect-color");
 
 selectConItems.forEach((item) => (item.style.display = "none"));
-// deselectConItems.forEach((item) => (item.style.display = "none"));
 
 //hide pick color page and jump to boardgame page
 function goToBoard() {
@@ -60,10 +69,12 @@ bgPieces.forEach((bgPiece) => {
   bgPiece.addEventListener("click", selectAndDeselect);
 });
 
-var selectPieceSize, pieceSize
+const playerNames = document.getElementsByClassName("user-profile-name");
+
+var selectPieceSize, pieceSize, email,
   countPiecesL = 0,
   countPiecesM = 0,
-  countPiecesS = 0;
+  countPiecesS = 0, place = false;
 
 // player select & deselect on boardgame
 function selectAndDeselect(event) {
@@ -72,20 +83,22 @@ function selectAndDeselect(event) {
   pieceSize = pieceSelect;
 
   // Piece in grey turn to player's color == player select this piece
-  if (event.currentTarget.style.backgroundColor == bgPiecesColor) {
+  if (event.currentTarget.style.backgroundColor == bgPiecesColor && place == false) {
     if (selectPieceSize == "L" && countPiecesL < 3) {
-      countPiecesL += 1;
-      
+      countPiecesL += 1; place = true;
       this.style.backgroundColor = playerColor;
       selectPlayerPiece(selectPieceSize);
+      console.log('select 1')
     } else if (selectPieceSize == "M" && countPiecesM < 3) {
-      countPiecesM += 1;
+      countPiecesM += 1; place = true;
       this.style.backgroundColor = playerColor;
       selectPlayerPiece(selectPieceSize);
+      console.log('select 2')
     } else if (selectPieceSize == "S" && countPiecesS < 3) {
-      countPiecesS += 1;
+      countPiecesS += 1; place = true;
       this.style.backgroundColor = playerColor;
       selectPlayerPiece(selectPieceSize);
+      console.log('select 1')
     } else {
       alert("Your " + selectPieceSize + " pieces is empty.");
     }
@@ -96,21 +109,43 @@ function selectAndDeselect(event) {
     // Piece in player's color turn to grey == player deselect this piece
   } else if (event.currentTarget.style.backgroundColor == playerColor) {
     if (selectPieceSize == "L") {
-      countPiecesL -= 1;
+      countPiecesL -= 1; place = false;
       this.style.backgroundColor = bgPiecesColor;
       selectPlayerPiece(selectPieceSize);
+      console.log('deselect 1')
     } else if (selectPieceSize == "M") {
-      countPiecesM -= 1;
+      countPiecesM -= 1; place = false;
       this.style.backgroundColor = bgPiecesColor;
       selectPlayerPiece(selectPieceSize);
+      console.log('deselect 2')
     } else if (selectPieceSize == "S") {
-      countPiecesS -= 1;
+      countPiecesS -= 1; place = false;
       this.style.backgroundColor = bgPiecesColor;
       selectPlayerPiece(selectPieceSize);
+      console.log('deselect 3')
     }
     piece = piece.filter((item) => item !== pieceSelect);
     event.stopPropagation();
   }
+}
+
+function restartBoard(){
+  bgPieces.forEach((bgPiece) => {
+    bgPiece.style.backgroundColor = bgPiecesColor;
+  });
+  playerPieces.forEach((playerPiece) => {
+    playerPiece.style.backgroundColor = playerColor;
+  });
+  countPiecesL = 0,
+  countPiecesM = 0,
+  countPiecesS = 0;
+  selectPieceSize = undefined;
+  pieceSize = undefined;
+  place = false;
+  piece = [];
+  const currentUser = firebase.auth().currentUser;
+  ref.child(currentUser.uid).remove();
+  console.log('---------restart----------')
 }
 
 ref.on("value", (snapshot) => {
@@ -127,12 +162,13 @@ function done() {
       alert("Select only one piece!!!");
     } else {
     document.getElementById(piece[0]).removeEventListener("click", selectAndDeselect);
-      ref.child("player-1").push({
-        chesse: piece.pop(),
+    const currentUser = firebase.auth().currentUser;
+      ref.child(currentUser.uid).push({
+        position: piece.pop(),
         color: playerColor
       });
-      
       alert("DONE SUCCESS");
+      place = false;
     }
   } else {
     alert("plz select one piece");
@@ -179,13 +215,15 @@ const logoutItems = document.querySelectorAll(".logged-out");
 const loginItems = document.querySelectorAll(".logged-in");
 
 function setupUI(user){
-    if (user) {
+ if (user) {
         loginItems.forEach(item => item.style.display = 'block');
         logoutItems.forEach(item => item.style.display = 'none');
+        email = user.email
         console.log("user login show")
     } else {
         loginItems.forEach(item => item.style.display = 'none');
         logoutItems.forEach(item => item.style.display = 'block');
+        selectConItems.forEach((item) => (item.style.display = "none"));
         console.log("user logout show")
     }
 }

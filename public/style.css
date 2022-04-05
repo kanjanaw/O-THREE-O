@@ -36,15 +36,14 @@ h6, .btn-game .btn-index .btn-signup {
   font-family: "Segoe UI", Arial, sans-serif;
 }
 
-a,
-a:link, a.nav-link {
+a, a:link, a.nav-link, a.nav-link:hover{
   font-weight: 900;
   font-size: 1.3vw;
   text-decoration: underline;
   color: #8c52ff;
 }
 
-.nav-link:hover, a.nav-link:hover{
+a.nav-link:hover , a.nav-link:active{
   color: #ffde59;
   background-color: #8c52ff;
 }
@@ -117,27 +116,46 @@ a:link, a.nav-link {
 
 .piece-block{
     background-color: #F1f1f1;
-    border-radius: 4.5vw;
+    border-radius:2.7vw;
     width: 100%;
-    height: 26vw;
+    height: 10.5vw;
     display: grid;
     column-gap: 1vw;
     row-gap: 1vw;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto auto auto;
     padding: 2vw;
 }
-.display-block{
+.time-block{
     background-color: #Ffde59;
     border-radius: 80px;
     width: 100%;
-    height: 5vw;
+    height: 6vw;
     color: #8c52ff;
     font-weight: 900;
-    font-size: 2.25vw;
-    font-style: italic;
+    font-size: 2.8vw;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.player-name-block{
+  background-color: rgb(52, 52, 52);
+  color: white;
+  border-radius: 2.7vw;
+  width: 100%;
+  height: 12vw;
+  font-size: 1.25vw;
+  width: 100%;
+  text-align: center;
+}
+.user-profile-name{
+  width: 100%;
+  /* background-color: black; */
+  /* color: #dcdcdc; */
+  font-weight: 650;
+}
+
+.disabled{
+  color: rgb(199, 199, 199);
 }
 
 .btn-game {

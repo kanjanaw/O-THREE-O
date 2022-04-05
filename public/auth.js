@@ -23,6 +23,29 @@ function createUser(event) {
         });
 };
 
+const btnCancel = document.querySelectorAll('.btn-cancel').forEach(btn =>{
+    btn.addEventListener('click', ()=>{
+        signupForm.reset();
+        signupFeedback.innerHTML="";
+    })
+})
+
+firebase.auth().onAuthStateChanged((user)=>{
+    if(user){
+        console.log('User: ', user)
+        setupUI(user);
+    }
+   else{
+       console.log('uvavailble user')
+   }
+})
+
+const btnLogout = document.getElementById("sign-out");
+    btnLogout.addEventListener('click', ()=>{
+        firebase.auth().signOut();
+        console.log('Logout completed.');
+})
+
 //login
 const loginForm = document.querySelector("#login-form");
 loginForm.addEventListener("submit", loginUser);
@@ -40,7 +63,7 @@ function loginUser(event) {
             console.log('user login')
             loginFeedback.style = 'color:green';
             loginFeedback.innerHTML = '<i class="bi bi-check-circle-fill"></i> login completed.';
-            setTimeout(function() {loginModal.hide()}, 1000);
+            setTimeout(function() {loginModal.hide(), console.log(loginModal)}, 1000);
         })
         .catch((error) => {
             loginFeedback.style = 'color:crimson';
@@ -48,26 +71,8 @@ function loginUser(event) {
             loginForm.reset();
         });
 };
-const btnCancel = document.querySelectorAll('.btn-cancel').forEach(btn =>{
-    btn.addEventListener('click', ()=>{
-        signupForm.reset();
-        signupFeedback.innerHTML="";
-    })
-})
 
-firebase.auth().onAuthStateChanged((user)=>{
-    console.log('User: ', user)
-    // getList(user);
-    setupUI(user);
-})
-
-
-// const btnLogout = document.querySelector('#btnLogout');
-//     btnLogout.addEventListener('click', ()=>{
-//         firebase.auth().signOut();
-//         console.log('Logout completed.');
-    
-// })
-
-
-
+// firebase.auth().onAuthStateChanged((user) => {
+//     console.log('User: ', user);
+//     setupUI(user)
+// });

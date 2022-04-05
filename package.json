@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "firebase": "^9.6.10"
+  },
+  "name": "o-three-o",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kanjanaw/O-THREE-O.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kanjanaw/O-THREE-O/issues"
+  },
+  "homepage": "https://github.com/kanjanaw/O-THREE-O#readme"
+}

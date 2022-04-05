@@ -66,59 +66,59 @@
         </div>
 
       </div>
+    </div>
+  </div>
 
-      <div class="modal" id="modal-login" tabindex="-1">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Login</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="" id="login-form" class="">
-              <div class="modal-body mb-3">
-                <input type="email" id="input-email-login" class="form-control" placeholder="Email" aria-label="title"
-                  aria-describedby="basic-addon1" required />
-                <br />
-                <input type="password" id="input-password-login" class="form-control" placeholder="Password"
-                  aria-label="title" aria-describedby="basic-addon1" required />
-                <p id="feedback-msg-login"></p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary btn-cancel" data-bs-dismiss="modal">
-                  Cancel
-                </button>
-                <button type="submit" class="btn btn-primary">Login</button>
-              </div>
-            </form>
-          </div>
+  <div class="modal" id="modal-login" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Login</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+        <form action="" id="login-form" class="">
+          <div class="modal-body mb-3">
+            <input type="email" id="input-email-login" class="form-control" placeholder="Email" aria-label="title"
+              aria-describedby="basic-addon1" required />
+            <br />
+            <input type="password" id="input-password-login" class="form-control" placeholder="Password"
+              aria-label="title" aria-describedby="basic-addon1" required />
+            <p id="feedback-msg-login"></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary btn-cancel" data-bs-dismiss="modal">
+              Cancel
+            </button>
+            <button type="submit" class="btn btn-primary" id="btnLogin">Login</button>
+          </div>
+        </form>
       </div>
+    </div>
+  </div>
 
-      <div class="modal" id="modal-signup" tabindex="-1">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Sign up</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="" id="signup-form" class="">
-              <div class="modal-body mb-3">
-                <input type="email" id="input-email-signup" class="form-control" placeholder="Email" aria-label="title"
-                  aria-describedby="basic-addon1" required />
-                <br />
-                <input type="password" id="input-password-signup" class="form-control" placeholder="Password"
-                  aria-label="title" aria-describedby="basic-addon1" required />
-                <p id="feedback-msg-signup"></p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary btn-cancel" data-bs-dismiss="modal">
-                  Cancel
-                </button>
-                <button type="submit" class="btn btn-primary">Sign up</button>
-              </div>
-            </form>
-          </div>
+  <div class="modal" id="modal-signup" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Sign up</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+        <form action="" id="signup-form" class="">
+          <div class="modal-body mb-3">
+            <input type="email" id="input-email-signup" class="form-control" placeholder="Email" aria-label="title"
+              aria-describedby="basic-addon1" required />
+            <br />
+            <input type="password" id="input-password-signup" class="form-control" placeholder="Password"
+              aria-label="title" aria-describedby="basic-addon1" required />
+            <p id="feedback-msg-signup"></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary btn-cancel" data-bs-dismiss="modal">
+              Cancel
+            </button>
+            <button type="submit" class="btn btn-primary">Sign up</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
@@ -158,7 +158,7 @@
             <a class="nav-link" href="#">HELP</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" onclick="goToLogin()">SIGN OUT</a>
+            <a class="nav-link" href="#" id="sign-out">SIGN OUT</a>
           </li>
         </ul>
       </nav>
@@ -261,10 +261,20 @@
       </div>
       <div class="p-0" style="width: 40%;">
         <div class="" style="margin-bottom: 1.25vw;">
-            <div class="display-block">
-              <p>User's Turn</p>
+            <div class="time-block">
+              <p>Timer</p>
             </div>
         </div>
+
+        <div class="" style="margin-bottom: 1.25vw;">
+          <div class="player-name-block d-flex flex-column justify-content-center">
+            <div class="font-italic" style="font-weight: 900; font-size: 1.7vw; margin-top: -15px;">PLAYER</div>
+            <div class="user-profile-name" id="blue">playername</div>
+            <div class="user-profile-name" id="green">playername</div>
+            <div class="user-profile-name" id="yellow">playername</div>
+            <div class="user-profile-name" id="red">playername</div>
+          </div>
+      </div>
 
         <div class="" style="margin-bottom: 1.25vw;">
             <div class="piece-block" style="padding: 1.5vw;">
@@ -301,7 +311,7 @@
         </div>
 
         <div class="d-flex">
-          <button type="button" class="btn-game" style="margin-right: 2%; width: 49%;"><i
+          <button type="button" class="btn-game" style="margin-right: 2%; width: 49%;" onclick="restartBoard()"><i
               class="fi fi-sr-refresh"></i> RESTART</button>
           <button type="button" class="btn-game" id="btn-done" style="width: 49%"><i class="fi fi-br-check"></i>
             DONE!</button>
