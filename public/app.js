@@ -47,6 +47,13 @@ function goToBoard() {
   }
 }
 
+function goToLogin() {
+  logoutItems.forEach((item) => (item.style.display = "block"));
+  loginItems.forEach((item) => (item.style.display = "none"));
+  selectConItems.forEach((item) => (item.style.display = "none"));
+  deselectConItems.forEach((item) => (item.style.display = "none"));
+}
+
 const bgPieces = document.querySelectorAll(".boardgame-pieces");
 bgPieces.forEach((bgPiece) => {
   bgPiece.style.backgroundColor = bgPiecesColor;
