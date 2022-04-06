@@ -214,7 +214,7 @@ const logoutItems = document.querySelectorAll(".logged-out");
 const loginItems = document.querySelectorAll(".logged-in");
 
 function setupUI(user){
- if (user&&isLogin==true) {
+ if (user) {
         loginItems.forEach(item => item.style.display = 'block');
         logoutItems.forEach(item => item.style.display = 'none');
         email = user.email
