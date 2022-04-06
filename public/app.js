@@ -213,17 +213,22 @@ function selectPlayerPiece(size) {
 const logoutItems = document.querySelectorAll(".logged-out");
 const loginItems = document.querySelectorAll(".logged-in");
 
-function setupUI(user){
- if (user) {
+function setupUI(isLogin, user){
+ if (isLogin == true) {
         loginItems.forEach(item => item.style.display = 'block');
         logoutItems.forEach(item => item.style.display = 'none');
         email = user.email
-        console.log("user login show")
+        console.log("user login")
     } else {
+      if(user){
+        console.log("has user but not log in")
+      }
+      else{
+        console.log("user logout")
+      }
         loginItems.forEach(item => item.style.display = 'none');
         logoutItems.forEach(item => item.style.display = 'block');
         selectConItems.forEach((item) => (item.style.display = "none"));
-        console.log("user logout show")
     }
 }
 

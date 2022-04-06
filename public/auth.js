@@ -1,6 +1,8 @@
 const signupForm = document.querySelector("#signup-form");
 signupForm.addEventListener("submit", createUser);
 
+let isLogin = false
+
 const signupFeedback = document.querySelector("#feedback-msg-signup");
 const signupModal = new bootstrap.Modal(document.querySelector("#modal-signup"));
 
@@ -15,6 +17,7 @@ function createUser(event) {
             signupFeedback.style = 'color:green';
             signupFeedback.innerHTML = '<i class="bi bi-check-circle-fill"></i> Signup completed.';
             setTimeout(function() {signupModal.hide()}, 1000);
+            isLogin = false
         })
         .catch((error) => {
             signupFeedback.style = 'color:crimson';
@@ -27,6 +30,7 @@ const btnLogout = document.getElementById("sign-out");
     btnLogout.addEventListener('click', ()=>{
         firebase.auth().signOut();
         console.log('Logout completed.');
+        isLogin = false
 })
 
 //login
@@ -47,6 +51,7 @@ function loginUser(event) {
             loginFeedback.style = 'color:green';
             loginFeedback.innerHTML = '<i class="bi bi-check-circle-fill"></i> login completed.';
             setTimeout(function() {loginModal.hide(), console.log(loginModal)}, 1000);
+            isLogin = true;
         })
         .catch((error) => {
             loginFeedback.style = 'color:crimson';
@@ -74,5 +79,5 @@ const btnClose = document.querySelectorAll('.btn-close').forEach(btn =>{
 
 firebase.auth().onAuthStateChanged((user) => {
     console.log('User: ', user);
-    setupUI(user)
+    setupUI(isLogin, user)
 });
