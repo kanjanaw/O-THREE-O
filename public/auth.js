@@ -23,23 +23,6 @@ function createUser(event) {
         });
 };
 
-const btnCancel = document.querySelectorAll('.btn-cancel').forEach(btn =>{
-    btn.addEventListener('click', ()=>{
-        signupForm.reset();
-        signupFeedback.innerHTML="";
-    })
-})
-
-// firebase.auth().onAuthStateChanged((user)=>{
-//     if(user){
-//         console.log('User: ', user)
-//         setupUI(user);
-//     }
-//    else{
-//        console.log('uvavailble user')
-//    }
-// })
-
 const btnLogout = document.getElementById("sign-out");
     btnLogout.addEventListener('click', ()=>{
         firebase.auth().signOut();
@@ -71,6 +54,23 @@ function loginUser(event) {
             loginForm.reset();
         });
 };
+const btnCancel = document.querySelectorAll('.btn-cancel').forEach(btn =>{
+    btn.addEventListener('click', ()=>{
+        signupForm.reset();
+        signupFeedback.innerHTML="";
+        loginForm.reset();
+        loginFeedback.innerHTML="";
+    })
+})
+
+const btnClose = document.querySelectorAll('.btn-close').forEach(btn =>{
+    btn.addEventListener('click', ()=>{
+        signupForm.reset();
+        signupFeedback.innerHTML="";
+        loginForm.reset();
+        loginFeedback.innerHTML="";
+    })
+})
 
 firebase.auth().onAuthStateChanged((user) => {
     console.log('User: ', user);

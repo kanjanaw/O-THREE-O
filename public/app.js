@@ -130,6 +130,7 @@ function selectAndDeselect(event) {
 function restartBoard(){
   bgPieces.forEach((bgPiece) => {
     bgPiece.style.backgroundColor = bgPiecesColor;
+    bgPiece.addEventListener("click", selectAndDeselect);
   });
   playerPieces.forEach((playerPiece) => {
     playerPiece.style.backgroundColor = playerColor;
@@ -161,7 +162,7 @@ function done() {
     } else {
     document.getElementById(piece[0]).removeEventListener("click", selectAndDeselect);
     const currentUser = firebase.auth().currentUser;
-      ref.child(currentUser.uid).push({
+      ref.child("player id "+currentUser.uid).push({
         position: piece.pop(),
         color: playerColor
       });
@@ -213,7 +214,7 @@ const logoutItems = document.querySelectorAll(".logged-out");
 const loginItems = document.querySelectorAll(".logged-in");
 
 function setupUI(user){
- if (user) {
+ if (user&&isLogin==true) {
         loginItems.forEach(item => item.style.display = 'block');
         logoutItems.forEach(item => item.style.display = 'none');
         email = user.email
