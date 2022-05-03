@@ -55,25 +55,39 @@ function setName() {
             playerNames[i].style.opacity = 1
             // playerReady++
             // console.log(playerReady)
-        }else{
-            playerNames[i].innerText = 'Waiting for player...'
-            playerNames[i].style.opacity = .3
         }
+        // else{
+        //     playerNames[i].innerText = 'Waiting for player...'
+        //     playerNames[i].style.opacity = .3
+        // }
     }
 
 }
 
-var ref = firebase.database().ref(`games-room`)
+var ref = firebase.database().ref(`games-room`);
 ref.on("value", (snapshot) => {
-    getGameInfo(snapshot);
+  getGameInfo(snapshot);
 });
 
-
 function getGameInfo(snapshot) {
-
-    var playerRef = firebase.database().ref(`games-room/${roomCode}/players`)
-    
-    
+    snapshot.forEach(function (roomSnapshot) {
+    var key = roomSnapshot.key;
+    if (key == roomCode) {
+      ref
+        .child(roomCode)
+        .child("players")
+        .once("value", (playerSnapshot) => {
+            playerSnapshot.forEach((playerInfo) => {
+                var color = playerInfo.key
+                var name = playerInfo.val().playerName
+                console.log("color code : "+color)
+                console.log("name : "+ name);
+                playerNames[color].innerText = name;
+                playerNames[color].style.opacity = 1
+              });  
+        });
+    }
+  });
 }
 
 // function joinGame() {
