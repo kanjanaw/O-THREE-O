@@ -19,6 +19,7 @@ function goToBoard() {
   if (playerColor != undefined) {
     selectedColor.forEach((item) => (item.style.display = "block"));
     deselectedColor.forEach((item) => (item.style.display = "none"));
+    timer()
   } else {
     alert("plz pick your color");
   }
