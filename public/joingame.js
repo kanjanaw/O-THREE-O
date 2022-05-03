@@ -9,23 +9,39 @@ const setOfColor = [
     "rgb(255, 109, 109)",
 ];
 
+circlesColor.forEach((circleColor) => { circleColor.style.outline = "none"; })
+circlesColor.forEach((circleColor) => { circleColor.disabled = false; })
+
 var playerColor, indexSetColor
+
+// function setColor(color) {
+//     playerColor = setOfColor[color];
+//     indexSetColor = color;
+   
+//     playerPieces.forEach((playerPiece) => {
+//         playerPiece.style.backgroundColor = setOfColor[color];
+//     })
+
+//     circlesColor.forEach((circleColor) => { circleColor.style.outline = "none"; })
+//     event.currentTarget.style.outline = "10px solid rgba(172, 172, 172, .6)";
+
+//     setName()
+
+//     circlesColor.forEach((circleColor) => { circleColor.disabled = false; })
+//     circlesColor[indexSetColor].disabled = true
+
+//     pushPlayers(color, playerColor)
+// }
 
 function setColor(color) {
     playerColor = setOfColor[color];
     indexSetColor = color;
    
-    playerPieces.forEach((playerPiece) => {
-        playerPiece.style.backgroundColor = setOfColor[color];
-    })
-
-    circlesColor.forEach((circleColor) => { circleColor.style.outline = "none"; })
-    event.currentTarget.style.outline = "10px solid rgba(172, 172, 172, .6)";
+    // playerPieces.forEach((playerPiece) => {
+    //     playerPiece.style.backgroundColor = setOfColor[color];
+    // })
 
     setName()
-
-    circlesColor.forEach((circleColor) => { circleColor.disabled = false; })
-    circlesColor[indexSetColor].disabled = true
 
     pushPlayers(color, playerColor)
 }
@@ -85,6 +101,8 @@ function getGameInfo(snapshot) {
                 console.log("name : "+ name);
                 playerNames[color].innerText = name;
                 playerNames[color].style.opacity = 1
+                circlesColor[color].disabled = true
+                circlesColor[color].style.outline = "10px solid rgba(172, 172, 172, .6)";
                 count++
               });  
         });

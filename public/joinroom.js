@@ -82,6 +82,9 @@ function joinRoom(snapshot) {
             console.log("name : " + name);
             playerNames[color].innerText = name;
             playerNames[color].style.opacity = 1;
+            circlesColor[color].disabled = true;
+            circlesColor[color].style.outline =
+              "10px solid rgba(172, 172, 172, .6)";
             count++;
           });
         });
