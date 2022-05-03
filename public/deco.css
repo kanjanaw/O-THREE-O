@@ -32,7 +32,7 @@ h2,
 h3,
 h4,
 h5,
-h6, .btn-game .btn-index .btn-signup {
+h6, .btn-game, .btn-index, .btn-signup, input {
   font-family: "Segoe UI", Arial, sans-serif;
 }
 
@@ -147,9 +147,22 @@ a.nav-link:hover , a.nav-link:active{
   width: 100%;
   text-align: center;
 }
+
+.block-room{
+  background-color: rgb(245, 245, 245);
+  color: black;
+  border-radius: 2vw;
+  width: 100%;
+  height: 50vh;
+  font-size: 1.25vw;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
 .user-profile-name{
   width: 100%;
   font-weight: 650;
+  opacity: .3;
 }
 
 
@@ -182,8 +195,8 @@ a.nav-link:hover , a.nav-link:active{
 }
 
 .block-circle-color{
-  margin: 1vw;
-  padding: 5vw;
+  margin: .45vw;
+  padding: 3vw;
   border-radius: 50%;
   width: auto;
   height: auto;
@@ -191,7 +204,7 @@ a.nav-link:hover , a.nav-link:active{
 }
 
 .block-circle-color:hover, .block-circle-color:active, .block-circle-color:focus{
-  outline: 15px solid rgba(172, 172, 172, 0.35);
+  outline: 10px solid rgba(172, 172, 172, 0.35);
 }
 .block-blue{
   background-color: rgb(109, 187, 255)
@@ -209,19 +222,23 @@ a.nav-link:hover , a.nav-link:active{
   background-color: rgb(255, 109, 109);
 }
 
-.block-blue:disabled, .block-green:disabled, .block-red:disabled, .block-yellow:disabled, .block-circle-color:disabled{
-  background-color: rgb(199, 199, 199);
-  border: 5px solid #747474;
+.block-circle-color:disabled{
+  opacity: .3;
   outline: none;
 }
 
-.player-name-block-light{
-  background-color: #dcdcdc;
-  color: black;
-  border-radius: 2.25vw;
-  width: 100%;
-  height: 12vw;
-  font-size: 1.25vw;
-  width: 100%;
-  text-align: center;
+#blue{
+  color: rgb(109, 187, 255)
+}
+
+#green{
+  color: rgb(25, 212, 184)
+}
+
+#yellow{
+  color: rgb(255, 222, 89)
+}
+
+#red{
+  color: rgb(255, 109, 109);
 }

@@ -1,4 +1,5 @@
-<html lang="en">
+<!DOCTYPE html>
+<html>
 
 <head>
   <meta charset="UTF-8" />
@@ -6,7 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>O-THREE-O</title>
   <link rel="icon" href="img/logo.jpg" />
-  <link rel="stylesheet" href="style.css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
 
@@ -34,35 +34,39 @@
 
   <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css'>
   <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+  <link rel="stylesheet" href="deco.css">
 </head>
 
 <body>
-  <div class="container logged-out" style="width: 70vw;">
+  <div class="container logged-out" style="width: 70vw; height: 100vh;">
     <div class="d-flex flex-column align-items-center justify-content-center" style="height: 80%;">
       <img class="img-fluid" src="img/logo.jpg" alt="" width="25%" height="25%" />
 
-      <div class="row text-center " style="width: 70vw">
+      <div class="row text-center d-flex  justify-content-center" style="width: 70vw;">
 
         <div class="col-6 p-3 d-flex flex-column align-items-center" style="border-right: solid 1px lightgrey">
           <h2 class="mb-5">Play as anonymous</h2>
-          <input type="text" class="form-control form-control-lg mb-4" id="inputusername" placeholder="ENTER YOUR NAME"
-            style="width: 20vw;" />
-          <button type="button" class="btn-index" style="width: 20vw;">
-            LET'S GO!
-          </button>
+          <form action="" id="anony-form" class="">
+            <input type="text" class="form-control form-control-lg mb-4" id="input-username-anony" placeholder="ENTER YOUR NAME"
+              style="width: 20vw;" />
+            <button type="submit" class="btn-index" style="width: 20vw;">
+              LET'S GO!
+            </button>
+          </form>
         </div>
 
         <div class="col-6 p-3">
           <h2 class="mb-5">Play with your account</h2>
-          <button type="button" class="btn-index" style="width: 20vw;" data-bs-toggle="modal"
+          <button type="button" class="btn-index mb-4" style="width: 20vw;" data-bs-toggle="modal"
             data-bs-target="#modal-login">
             LOGIN
           </button>
-          <p class="mt-3 mb-4">or</p>
-          <button type="button" class="btn-game" style="width: 20vw; background-color: rgb(44, 44, 44);"
+          <br>
+          <span style="font-weight: 600;">Don't have an account? </span>
+          <a href="#" class="btn-game" style="padding: 0 10px; background-color: transparent; color:#8c52ff; font-size: 1.1vw;"
             data-bs-toggle="modal" data-bs-target="#modal-signup">
             SIGN UP
-          </button>
+        </a>
         </div>
 
       </div>
@@ -74,7 +78,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Login</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="btn-close btn-cancel" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <form action="" id="login-form" class="">
           <div class="modal-body mb-3">
@@ -101,10 +105,13 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Sign up</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="btn-close btn-cancel" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <form action="" id="signup-form" class="">
           <div class="modal-body mb-3">
+            <input type="text" id="input-username-signup" class="form-control" placeholder="Username" aria-label="title"
+              aria-describedby="basic-addon1" required />
+            <br />
             <input type="email" id="input-email-signup" class="form-control" placeholder="Email" aria-label="title"
               aria-describedby="basic-addon1" required />
             <br />
@@ -123,219 +130,317 @@
     </div>
   </div>
 
-  <div class="container text-center deselect-color logged-in" style="width: 70vw;">
+  <!-- <div class="container text-center logged-in deselected-color" style="width: 70vw; height: 100vh;">
     <div class="d-flex flex-column align-items-center justify-content-center" style="height: 95%;">
       <h1 style="font-size: 3rem;">PICK YOUR COLOR</h1>
       <div class="d-flex mt-3">
-        <button type="button" class="block-circle-color" style="background-color: rgb(109, 187, 255);"
+        <button type="button" class="block-circle-color block-blue"
           onclick="setColor(0)"></button>
-        <button type="button" class="block-circle-color" style="background-color: rgb(25, 212, 184);"
+        <button type="button" class="block-circle-color block-green" 
           onclick="setColor(1)"></button>
       </div>
       <div class="d-flex mb-4">
-        <button type="button" class="block-circle-color" style="background-color: rgb(255, 222, 89);"
+        <button type="button" class="block-circle-color block-yellow"
           onclick="setColor(2)"></button>
-        <button type="button" class="block-circle-color" style="background-color: rgb(255, 109, 109);"
+        <button type="button" class="block-circle-color block-red"
           onclick="setColor(3)"></button>
       </div>
       <button type="button" class="btn-game" style="width: 30%; background-color: rgb(44, 44, 44); " id="go-btn" onclick="goToBoard()">
         GO
       </button>
     </div>
-  </div>
+  </div> -->
 
-  <div class="container select-color" style="width: 70vw;">
+  <div class="container logged-in selected-color" style="width: 70vw; height: 100vh;">
    
-      <nav class="navbar p-0 d-flex align-items-end">
-        <a href="#">
-          <img class="img-fluid" src="img/logo.jpg" alt="" width="27%" height="27%" />
-        </a>
-        <ul class="nav justify-content-end mb-4">
-          <li class="nav-item align-items-end">
-            <a class="nav-link" aria-current="page" href="#">HOW TO PLAY</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">HELP</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" id="sign-out">SIGN OUT</a>
-          </li>
-        </ul>
-      </nav>
+    <nav class="navbar p-0 d-flex align-items-end">
+      <a href="#">
+        <img class="img-fluid" src="img/logo.jpg" alt="" width="27%" height="27%" />
+      </a>
+      <ul class="nav justify-content-end mb-4">
+        <li class="nav-item align-items-end">
+          <a class="nav-link" aria-current="page" href="#">HOW TO PLAY</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">HELP</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" id="btnLogout">QUIT</a>
+        </li>
+      </ul>
+    </nav>
 
 
-    <div class="row m-0 d-flex justify-content-between" style="width: 100%;">
-      <div class="p-0" style="width: 55%;">
-        <div class="boardgame">
-          <div class="boardgame-item-L boardgame-pieces" id="L11">
-            <div class="boardgame-item-block-L">
-              <div class="boardgame-item-M boardgame-pieces" id="M11">
-                <div class="boardgame-item-block-M">
-                  <div class="boardgame-item-S boardgame-pieces" id="S11"></div>
-                </div>
+  <div class="row m-0 d-flex justify-content-between" style="width: 100%;">
+    <div class="p-0" style="width: 55%;">
+      <div class="boardgame">
+        <div class="boardgame-item-L boardgame-pieces" id="L11">
+          <div class="boardgame-item-block-L">
+            <div class="boardgame-item-M boardgame-pieces" id="M11">
+              <div class="boardgame-item-block-M">
+                <div class="boardgame-item-S boardgame-pieces" id="S11"></div>
               </div>
             </div>
           </div>
-
-          <div class="boardgame-item-L boardgame-pieces" id="L12">
-            <div class="boardgame-item-block-L">
-              <div class="boardgame-item-M boardgame-pieces" id="M12">
-                <div class="boardgame-item-block-M">
-                  <div class="boardgame-item-S boardgame-pieces" id="S12"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="boardgame-item-L boardgame-pieces" id="L13">
-            <div class="boardgame-item-block-L">
-              <div class="boardgame-item-M boardgame-pieces" id="M13">
-                <div class="boardgame-item-block-M">
-                  <div class="boardgame-item-S boardgame-pieces" id="S13"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="boardgame-item-L boardgame-pieces" id="L21">
-            <div class="boardgame-item-block-L">
-              <div class="boardgame-item-M boardgame-pieces" id="M21">
-                <div class="boardgame-item-block-M">
-                  <div class="boardgame-item-S boardgame-pieces" id="S21"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="boardgame-item-L boardgame-pieces" id="L22">
-            <div class="boardgame-item-block-L">
-              <div class="boardgame-item-M boardgame-pieces" id="M22">
-                <div class="boardgame-item-block-M">
-                  <div class="boardgame-item-S boardgame-pieces" id="S22"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="boardgame-item-L boardgame-pieces" id="L23">
-            <div class="boardgame-item-block-L">
-              <div class="boardgame-item-M boardgame-pieces" id="M23">
-                <div class="boardgame-item-block-M">
-                  <div class="boardgame-item-S boardgame-pieces" id="S23"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="boardgame-item-L boardgame-pieces" id="L31">
-            <div class="boardgame-item-block-L">
-              <div class="boardgame-item-M boardgame-pieces" id="M31">
-                <div class="boardgame-item-block-M">
-                  <div class="boardgame-item-S boardgame-pieces" id="S31"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="boardgame-item-L boardgame-pieces" id="L32">
-            <div class="boardgame-item-block-L">
-              <div class="boardgame-item-M boardgame-pieces" id="M32">
-                <div class="boardgame-item-block-M">
-                  <div class="boardgame-item-S boardgame-pieces" id="S32"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="boardgame-item-L boardgame-pieces" id="L33">
-            <div class="boardgame-item-block-L">
-              <div class="boardgame-item-M boardgame-pieces" id="M33">
-                <div class="boardgame-item-block-M">
-                  <div class="boardgame-item-S boardgame-pieces" id="S33"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-      <div class="p-0" style="width: 40%;">
-        <div class="" style="margin-bottom: 1.25vw;">
-            <div class="time-block">
-              <p>Timer</p>
-            </div>
         </div>
 
-        <div class="" style="margin-bottom: 1.25vw;">
-          <div class="player-name-block d-flex flex-column justify-content-center">
-            <div class="font-italic" style="font-weight: 900; font-size: 1.7vw; margin-top: -15px;">PLAYER</div>
-            <div class="user-profile-name" id="blue">playername</div>
-            <div class="user-profile-name" id="green">playername</div>
-            <div class="user-profile-name" id="yellow">playername</div>
-            <div class="user-profile-name" id="red">playername</div>
-          </div>
-      </div>
-
-        <div class="" style="margin-bottom: 1.25vw;">
-            <div class="piece-block" style="padding: 1.5vw;">
-              <div class="boardgame-item-L player-pieces" id="P-L11">
-                <div class="boardgame-item-block-L">
-                  <div class="boardgame-item-M player-pieces" id="P-M11">
-                    <div class="boardgame-item-block-M">
-                      <div class="boardgame-item-S player-pieces" id="P-S11"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="boardgame-item-L player-pieces" id="P-L12">
-                <div class="boardgame-item-block-L">
-                  <div class="boardgame-item-M player-pieces" id="P-M12">
-                    <div class="boardgame-item-block-M">
-                      <div class="boardgame-item-S player-pieces" id="P-S12"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="boardgame-item-L player-pieces" id="P-L13">
-                <div class="boardgame-item-block-L">
-                  <div class="boardgame-item-M player-pieces" id="P-M13">
-                    <div class="boardgame-item-block-M">
-                      <div class="boardgame-item-S player-pieces" id="P-S13"></div>
-                    </div>
-                  </div>
-                </div>
+        <div class="boardgame-item-L boardgame-pieces" id="L12">
+          <div class="boardgame-item-block-L">
+            <div class="boardgame-item-M boardgame-pieces" id="M12">
+              <div class="boardgame-item-block-M">
+                <div class="boardgame-item-S boardgame-pieces" id="S12"></div>
               </div>
             </div>
+          </div>
         </div>
 
-        <div class="d-flex">
-          <button type="button" class="btn-game" style="margin-right: 2%; width: 49%;" onclick="restartBoard()"><i
-              class="fi fi-sr-refresh"></i> RESTART</button>
-          <button type="button" class="btn-game" id="btn-done" style="width: 49%"><i class="fi fi-br-check"></i>
-            DONE!</button>
-      </div>
+        <div class="boardgame-item-L boardgame-pieces" id="L13">
+          <div class="boardgame-item-block-L">
+            <div class="boardgame-item-M boardgame-pieces" id="M13">
+              <div class="boardgame-item-block-M">
+                <div class="boardgame-item-S boardgame-pieces" id="S13"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="boardgame-item-L boardgame-pieces" id="L21">
+          <div class="boardgame-item-block-L">
+            <div class="boardgame-item-M boardgame-pieces" id="M21">
+              <div class="boardgame-item-block-M">
+                <div class="boardgame-item-S boardgame-pieces" id="S21"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="boardgame-item-L boardgame-pieces" id="L22">
+          <div class="boardgame-item-block-L">
+            <div class="boardgame-item-M boardgame-pieces" id="M22">
+              <div class="boardgame-item-block-M">
+                <div class="boardgame-item-S boardgame-pieces" id="S22"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="boardgame-item-L boardgame-pieces" id="L23">
+          <div class="boardgame-item-block-L">
+            <div class="boardgame-item-M boardgame-pieces" id="M23">
+              <div class="boardgame-item-block-M">
+                <div class="boardgame-item-S boardgame-pieces" id="S23"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="boardgame-item-L boardgame-pieces" id="L31">
+          <div class="boardgame-item-block-L">
+            <div class="boardgame-item-M boardgame-pieces" id="M31">
+              <div class="boardgame-item-block-M">
+                <div class="boardgame-item-S boardgame-pieces" id="S31"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="boardgame-item-L boardgame-pieces" id="L32">
+          <div class="boardgame-item-block-L">
+            <div class="boardgame-item-M boardgame-pieces" id="M32">
+              <div class="boardgame-item-block-M">
+                <div class="boardgame-item-S boardgame-pieces" id="S32"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="boardgame-item-L boardgame-pieces" id="L33">
+          <div class="boardgame-item-block-L">
+            <div class="boardgame-item-M boardgame-pieces" id="M33">
+              <div class="boardgame-item-block-M">
+                <div class="boardgame-item-S boardgame-pieces" id="S33"></div>
+              </div>
+            </div>
+          </div>
+        </div>
 
       </div>
     </div>
+    <div class="p-0" style="width: 40%;">
+      <div class="" style="margin-bottom: 1.25vw;">
+          <div class="time-block">
+            <p style="font-size: 4vw;" id="timer"></p>
+          </div>
+      </div>
+
+      <div class="" style="margin-bottom: 1.25vw;">
+        <div class="player-name-block d-flex flex-column justify-content-center">
+          <div class="font-italic" style="font-weight: 900; font-size: 1.7vw; margin-top: -15px;">PLAYER</div>
+          <div class="user-profile-name" id="blue">Empty</div>
+          <div class="user-profile-name" id="green">Empty</div>
+          <div class="user-profile-name" id="yellow">Empty</div>
+          <div class="user-profile-name" id="red">Empty</div>
+        </div>
+    </div>
+
+      <div class="" style="margin-bottom: 1.25vw;">
+          <div class="piece-block" style="padding: 1.5vw;">
+            <div class="boardgame-item-L player-pieces" id="P-L11">
+              <div class="boardgame-item-block-L">
+                <div class="boardgame-item-M player-pieces" id="P-M11">
+                  <div class="boardgame-item-block-M">
+                    <div class="boardgame-item-S player-pieces" id="P-S11"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="boardgame-item-L player-pieces" id="P-L12">
+              <div class="boardgame-item-block-L">
+                <div class="boardgame-item-M player-pieces" id="P-M12">
+                  <div class="boardgame-item-block-M">
+                    <div class="boardgame-item-S player-pieces" id="P-S12"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="boardgame-item-L player-pieces" id="P-L13">
+              <div class="boardgame-item-block-L">
+                <div class="boardgame-item-M player-pieces" id="P-M13">
+                  <div class="boardgame-item-block-M">
+                    <div class="boardgame-item-S player-pieces" id="P-S13"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+
+      <div class="d-flex">
+        <button type="button" class="btn-game" style="margin-right: 2%; width: 49%;" onclick="restartBoard()"><i
+            class="fi fi-sr-refresh"></i> RESTART</button>
+        <button type="button" class="btn-game" id="btn-done" style="width: 49%"><i class="fi fi-br-check"></i>
+          DONE!</button>
+    </div>
+
+    </div>
+  </div>
+  </div>
+
+  <div class="container logged-in deselected-color" style="width: 70vw; height: 100vh;">
+    <div class="d-flex flex-column justify-content-center" style="height: 100%;">
+
+      <div class="row mb-5"> 
+
+        <div class="collapse show multi-collapse" id="collapseJoinRoom">
+          <h2 class="mb-3">JOIN ROOM</h2>
+          <form action="" id="form-room">
+            <div class="form-group row">
+              <div class="col-9">
+                <input type="text" class="form-control form-control-lg" placeholder="ENTER YOUR ROOM CODE" value="" id="input-room-code"
+             />
+              </div>
+              <div class="col-3">
+                <button type="submit" class="btn-lg btn-block btn" style="background-color: #Ffde59;
+                color: black;
+                border-radius: 2rem;
+                font-weight: 900;
+                font-size: 1.5rem;">
+                  JOIN
+                </button>
+              </div>
+            
+            </div>
+          </form>
+        </div>
+          
+          <h5 class="mt-1 mb-3" style="font-weight: 600;">Don't have an room code? 
+          <button type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse"  aria-expanded="false" aria-controls="collapseJoinRoom collapseExample" class="btn-game" style="text-decoration: underline;padding: 0 10px; background-color: transparent; color:#8c52ff;" id="btn-generate"
+          >
+            GENERATE ROOM CODE
+          </button></h5>
+
+        <div class="collapse multi-collapse" id="collapseExample">
+          <div class="card card-body">
+            <p class="text-center" id="room-code" style="font-weight: 900; font-size: 1.7vw;">ROOM CODE: </p>
+          </div>
+        </div>
+      </div>
+ 
+      <div class="block-room row d-flex align-items-center justify-content-center">
+        
+        <div class="row" id="room-select">
+          <div class="col-7" style="border-right: solid 1px lightgrey">
+            <div class="d-flex flex-column align-items-center justify-content-center">
+              <p class="font-italic" style="font-weight: 900; font-size: 1.7vw;">PICK YOUR COLOR</p>
+              <div class="d-flex">
+                <button type="button" class="block-circle-color block-blue"
+                  onclick="setColor(0)"></button>
+                <button type="button" class="block-circle-color block-green" 
+                  onclick="setColor(1)"></button>
+              </div>
+              <div class="d-flex mb-3">
+                <button type="button" class="block-circle-color block-yellow"
+                  onclick="setColor(2)"></button>
+                <button type="button" class="block-circle-color block-red"
+                  onclick="setColor(3)"></button>
+              </div>
+            </div>
+          </div>
+  
+          <div class="col-5 d-flex flex-column align-items-center text-center">
+            <p class="font-italic" style="font-weight: 900; font-size: 1.7vw;">PLAYER</p>
+            <div class="user-profile-name" id="blue">Waiting for player...</div>
+            <div class="user-profile-name" id="green">Waiting for player...</div>
+            <div class="user-profile-name" id="yellow">Waiting for player...</div>
+            <div class="user-profile-name" id="red">Waiting for player...</div>
+            <button type="button" class="btn-lg btn mt-4" style="background-color: #Ffde59;
+            color: black;
+            border-radius: 2rem;
+            font-weight: 900;
+            font-size: 1.5rem; padding: .5rem 5rem;" id="go-btn" onclick="goToBoard()">
+                START
+              </button>
+          </div>
+        </div>
+        
+        <div class="row" id="text-plz-join">
+          <div class="col-12">
+            <p class="font-italic text-center" style="font-weight: 900; font-size: 1.7vw;">PLEASE JOIN THE ROOM</p>
+          </div>
+        </div>
+
+      </div>
+           
+       
+
+    
+    </div>
+  
   </div>
 </body>
+
 <script>
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyARUFxKqVywrfVbiBIxWv67UQfSWNuf8e0",
-    authDomain: "o-three-o.firebaseapp.com",
-    databaseURL: "https://o-three-o-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "o-three-o",
-    storageBucket: "o-three-o.appspot.com",
-    messagingSenderId: "301258318530",
-    appId: "1:301258318530:web:da30a08d816985d8b2915b",
-    measurementId: "G-FFGDX00QMS"
-  };
+const firebaseConfig = {
+  apiKey: "AIzaSyADfOLCYu8dO-VzvwuM3x1No6WLjfAwFV8",
+  authDomain: "othreeo-2.firebaseapp.com",
+  databaseURL: "https://othreeo-2-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "othreeo-2",
+  storageBucket: "othreeo-2.appspot.com",
+  messagingSenderId: "540592911203",
+  appId: "1:540592911203:web:51c6e42f710a29a2255956",
+  measurementId: "G-88LTK675NL"
+};
   firebase.initializeApp(firebaseConfig);
 </script>
-<script type="text/javascript" src="auth.js"></script>
-<script type="text/javascript" src="app.js"></script>
+<script src="auth.js"></script>
+<script src="app.js"></script>
+<script src="joinroom.js"></script>
+<!-- <script src="joingame.js"></script> -->
+<!-- <script src="placepieces2.js"></script> -->
+<!-- <script src="pushandget.js"></script> -->
 
+<!-- <script src="timer.js"></script> -->
 </html>
