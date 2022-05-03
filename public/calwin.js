@@ -1,5 +1,7 @@
-function checkWinner(piece, color) {
-    const pieces = document.getElementsByClassName("boardgame-pieces")
+var colorWin = "rgb(220, 220, 220)";
+
+function checkWinner() {
+    // const pieces = document.getElementsByClassName("boardgame-pieces")
 
     const L11 = document.getElementById("L11");
     const L12 = document.getElementById("L12");
@@ -34,15 +36,263 @@ function checkWinner(piece, color) {
     const S32 = document.getElementById("S32");
     const S33 = document.getElementById("S33");
 
-     for (let i = 0; i++; i<9){
-        let id = document.getElementsByClassName("boardgame-item-L")[i].getAttribute('id')
-        let size = id[id.length - 3]
-        let row = id[id.length - 2]
-        let col = id[id.length - 1]
+  
 
-        if (row == '1'){
-            if ()
-        }
-     }
+    //Same Size
+//   if (countPiecesL == 3) {
+    //Horizontal
+    if ((L11.style.backgroundColor != "rgb(220, 220, 220)") && (L11.style.backgroundColor == L12.style.backgroundColor) && (L12.style.backgroundColor == L13.style.backgroundColor)) {
+        colorWin = L13.style.backgroundColor
+        alertWinner()
+    }
+    else if ((L21.style.backgroundColor != "rgb(220, 220, 220)") && (L21.style.backgroundColor == L22.style.backgroundColor) && (L22.style.backgroundColor == L23.style.backgroundColor)) {
+        colorWin = L23.style.backgroundColor
+        alertWinner()
+    }
+    else if ((L31.style.backgroundColor != "rgb(220, 220, 220)") && (L31.style.backgroundColor == L32.style.backgroundColor) && (L32.style.backgroundColor == L33.style.backgroundColor)) {
+        colorWin = L33.style.backgroundColor
+        alertWinner()
+    }
 
+    // //Vertical
+    else if ((L11.style.backgroundColor != "rgb(220, 220, 220)") && (L11.style.backgroundColor == L21.style.backgroundColor) && (L21.style.backgroundColor == L31.style.backgroundColor)) {
+        colorWin = L31.style.backgroundColor
+        alertWinner()
+    }
+    else if ((L12.style.backgroundColor != "rgb(220, 220, 220)") && (L12.style.backgroundColor == L22.style.backgroundColor) && (L22.style.backgroundColor == L32.style.backgroundColor)) {
+        colorWin = L32.style.backgroundColor
+        alertWinner()
+    }
+
+    else if ((L13.style.backgroundColor != "rgb(220, 220, 220)") && (L13.style.backgroundColor == L23.style.backgroundColor) && (L23.style.backgroundColor == L33.style.backgroundColor)) {
+        colorWin = L33.style.backgroundColor
+        alertWinner()
+    }
+
+    //Cross
+    else if ((L11.style.backgroundColor != "rgb(220, 220, 220)") && (L11.style.backgroundColor == L22.style.backgroundColor) && (L22.style.backgroundColor == L33.style.backgroundColor)) {
+        colorWin = L33.style.backgroundColor
+        alertWinner()
+    }
+    else if ((L13.style.backgroundColor != "rgb(220, 220, 220)") && (L13.style.backgroundColor == L22.style.backgroundColor) && (L22.style.backgroundColor == L31.style.backgroundColor)) {
+        colorWin = L31.style.backgroundColor
+        alertWinner()
+    }
+//   }
+
+//   else if (countPiecesM == 3) {
+    //Medium Horizontal
+    else if ((M11.style.backgroundColor != "rgb(220, 220, 220)") && (M11.style.backgroundColor == M12.style.backgroundColor) && (M12.style.backgroundColor == M13.style.backgroundColor)) {
+        colorWin = M13.style.backgroundColor
+        alertWinner()
+    }
+    else if ((M21.style.backgroundColor != "rgb(220, 220, 220)") && (M21.style.backgroundColor == M22.style.backgroundColor) && (M22.style.backgroundColor == M23.style.backgroundColor)) {
+        colorWin = M23.style.backgroundColor
+        alertWinner()
+    }
+    else if ((M31.style.backgroundColor != "rgb(220, 220, 220)") && (M21.style.backgroundColor == M22.style.backgroundColor) && (M22.style.backgroundColor == M23.style.backgroundColor)) {
+        colorWin = M23.style.backgroundColor
+        alertWinner()
+    }
+
+    //Vertical
+    else if ((M11.style.backgroundColor != "rgb(220, 220, 220)") && (M11.style.backgroundColor == M21.style.backgroundColor) && (M21.style.backgroundColor == M31.style.backgroundColor)) {
+        colorWin = M31.style.backgroundColor
+        alertWinner()
+    }
+    else if ((M12.style.backgroundColor != "rgb(220, 220, 220)") && (M12.style.backgroundColor == M22.style.backgroundColor) && (M22.style.backgroundColor == M32.style.backgroundColor)) {
+        colorWin = M32.style.backgroundColor
+        alertWinner()
+    }
+    else if ((M13.style.backgroundColor != "rgb(220, 220, 220)") && (M13.style.backgroundColor == M23.style.backgroundColor) && (M23.style.backgroundColor == M33.style.backgroundColor)) {
+        colorWin = M33.style.backgroundColor
+        alertWinner()
+    }
+
+    //Cross
+    else if ((M11.style.backgroundColor != "rgb(220, 220, 220)") && (M11.style.backgroundColor == M22.style.backgroundColor) && (M22.style.backgroundColor == M33.style.backgroundColor)) {
+        colorWin = M33.style.backgroundColor
+        alertWinner()
+    }
+    else if ((M13.style.backgroundColor != "rgb(220, 220, 220)") && (M13.style.backgroundColor == M22.style.backgroundColor) && (M22.style.backgroundColor == M31.style.backgroundColor)) {
+        colorWin = M31.style.backgroundColor
+        alertWinner()
+    }
+//   }
+
+//   else if (countPiecesS == 3) {
+    //Small Horizontal
+   else  if ((S11.style.backgroundColor != "rgb(220, 220, 220)") && (S11.style.backgroundColor == S12.style.backgroundColor) && (S12.style.backgroundColor == S13.style.backgroundColor)) {
+        colorWin = S13.style.backgroundColor
+        alertWinner()
+    }
+    else if ((S21.style.backgroundColor != "rgb(220, 220, 220)") && (S21.style.backgroundColor == S22.style.backgroundColor) && (S22.style.backgroundColor == S23.style.backgroundColor)) {
+        colorWin = S21.style.backgroundColor
+        alertWinner()
+    }
+    else if ((S31.style.backgroundColor != "rgb(220, 220, 220)") && (S21.style.backgroundColor == S22.style.backgroundColor) && (S22.style.backgroundColor == S23.style.backgroundColor)) {
+        colorWin = S23.style.backgroundColor
+        alertWinner()
+    }
+
+//     //Vertical
+    else if ((S11.style.backgroundColor != "rgb(220, 220, 220)") && (S11.style.backgroundColor == S21.style.backgroundColor) && (S21.style.backgroundColor == S31.style.backgroundColor)) {
+        colorWin = S11.style.backgroundColor
+        alertWinner()
+    }
+    else if ((S12.style.backgroundColor != "rgb(220, 220, 220)") && (S12.style.backgroundColor == S22.style.backgroundColor) && (S22.style.backgroundColor == S32.style.backgroundColor)) {
+        colorWin = S12.style.backgroundColor
+        alertWinner()
+    }
+    else if ((S13.style.backgroundColor != "rgb(220, 220, 220)") && (S13.style.backgroundColor == S23.style.backgroundColor) && (S23.style.backgroundColor == S33.style.backgroundColor)) {
+        colorWin = S33.style.backgroundColor
+        alertWinner()
+    }
+
+//     //Cross
+    else if ((S11.style.backgroundColor != "rgb(220, 220, 220)") && (S11.style.backgroundColor == S22.style.backgroundColor) && (S22.style.backgroundColor == S33.style.backgroundColor)) {
+        colorWin = S33.style.backgroundColor
+        alertWinner()
+    }
+    else if ((S13.style.backgroundColor != "rgb(220, 220, 220)") && (S13.style.backgroundColor == S22.style.backgroundColor) && (S22.style.backgroundColor == S31.style.backgroundColor)) {
+        colorWin = S13.style.backgroundColor
+        alertWinner()
+    }
+// //   }
+
+//   //Order + Same Space
+// //   else if ((countPiecesL >= 1) && (countPiecesM >= 1) && (countPiecesS >= 1)) {
+//     //Same Space
+    else if ((L11.style.backgroundColor != "rgb(220, 220, 220)") && (L11.style.backgroundColor == M11.style.backgroundColor) && (M11.style.backgroundColor == S11.style.backgroundColor)) {
+        colorWin = S11.style.backgroundColor
+        alertWinner()
+    }
+    else if ((L12.style.backgroundColor != "rgb(220, 220, 220)") && (L12.style.backgroundColor == M12.style.backgroundColor) && (M12.style.backgroundColor == S12.style.backgroundColor)) {
+        colorWin = S12.style.backgroundColor
+        alertWinner()
+    }
+    else if ((L13.style.backgroundColor != "rgb(220, 220, 220)") && (L13.style.backgroundColor == M13.style.backgroundColor) && (M13.style.backgroundColor == S13.style.backgroundColor)) {
+        colorWin = S13.style.backgroundColor
+        alertWinner()
+    }
+    else if ((L21.style.backgroundColor != "rgb(220, 220, 220)") && (L21.style.backgroundColor == M21.style.backgroundColor) && (M21.style.backgroundColor == S21.style.backgroundColor)) {
+        colorWin = S21.style.backgroundColor
+        alertWinner()
+    }
+    else if ((L22.style.backgroundColor != "rgb(220, 220, 220)") && (L22.style.backgroundColor == M22.style.backgroundColor) && (M22.style.backgroundColor == S22.style.backgroundColor)) {
+        colorWin = S22.style.backgroundColor
+        alertWinner()
+    }
+    else if ((L23.style.backgroundColor != "rgb(220, 220, 220)") && (L23.style.backgroundColor == M23.style.backgroundColor) && (M23.style.backgroundColor == S23.style.backgroundColor)) {
+        colorWin = S23.style.backgroundColor
+        alertWinner()
+    }
+    else if ((L31.style.backgroundColor != "rgb(220, 220, 220)") && (L31.style.backgroundColor == M31.style.backgroundColor) && (M31.style.backgroundColor == S31.style.backgroundColor)) {
+        colorWin = S31.style.backgroundColor
+        alertWinner()
+    }
+    else if ((L32.style.backgroundColor != "rgb(220, 220, 220)") && (L32.style.backgroundColor == M32.style.backgroundColor) && (M32.style.backgroundColor == S32.style.backgroundColor)) {
+        colorWin = S32.style.backgroundColor
+        alertWinner()
+    }
+    else if ((L33.style.backgroundColor != "rgb(220, 220, 220)") && (L33.style.backgroundColor == M33.style.backgroundColor) && (M33.style.backgroundColor == S33.style.backgroundColor)) {
+        colorWin = S33.style.backgroundColor
+        alertWinner()
+    }
+
+//     //Order Horizontal S-L
+    else if ((S11.style.backgroundColor != "rgb(220, 220, 220)") && (S11.style.backgroundColor == M12.style.backgroundColor) && (M12.style.backgroundColor == L13.style.backgroundColor)) {
+        colorWin = S11.style.backgroundColor
+        alertWinner()
+    }
+    else if ((S21.style.backgroundColor != "rgb(220, 220, 220)") && (S21.style.backgroundColor == M22.style.backgroundColor) && (M22.style.backgroundColor == L23.style.backgroundColor)) {
+        colorWin = S21.style.backgroundColor
+        alertWinner()
+    }
+    else if ((S31.style.backgroundColor != "rgb(220, 220, 220)") && (S31.style.backgroundColor == M32.style.backgroundColor) && (M22.style.backgroundColor == L33.style.backgroundColor)) {
+        colorWin = S31.style.backgroundColor
+        alertWinner()
+    }
+
+//     //L-S
+    else if ((L11.style.backgroundColor != "rgb(220, 220, 220)") && (L11.style.backgroundColor == M12.style.backgroundColor) && (M12.style.backgroundColor == S13.style.backgroundColor)) {
+        colorWin = S13.style.backgroundColor
+        alertWinner()
+    }
+    else if ((L21.style.backgroundColor != "rgb(220, 220, 220)") && (L21.style.backgroundColor == M22.style.backgroundColor) && (M22.style.backgroundColor == S23.style.backgroundColor)) {
+        colorWin = S23.style.backgroundColor
+        alertWinner()
+    }
+    else if ((L31.style.backgroundColor != "rgb(220, 220, 220)") && (L31.style.backgroundColor == M32.style.backgroundColor) && (M22.style.backgroundColor == S33.style.backgroundColor)) {
+        colorWin = S33.style.backgroundColor
+        alertWinner()
+    }
+
+//     //Vertical S-L
+    else if ((S11.style.backgroundColor != "rgb(220, 220, 220)") && (S11.style.backgroundColor == M21.style.backgroundColor) && (M21.style.backgroundColor == L31.style.backgroundColor)) {
+        colorWin = S11.style.backgroundColor
+        alertWinner()
+    }
+    else if ((S12.style.backgroundColor != "rgb(220, 220, 220)") && (S12.style.backgroundColor == M22.style.backgroundColor) && (M22.style.backgroundColor == L32.style.backgroundColor)) {
+        colorWin = S12.style.backgroundColor
+        alertWinner()
+    }
+    else if ((S13.style.backgroundColor != "rgb(220, 220, 220)") && (S13.style.backgroundColor == M23.style.backgroundColor) && (M23.style.backgroundColor == L33.style.backgroundColor)) {
+        colorWin = S13.style.backgroundColor
+        alertWinner()
+    }
+
+//     //L-S
+    else if ((L11.style.backgroundColor != "rgb(220, 220, 220)") && (L11.style.backgroundColor == M21.style.backgroundColor) && (M21.style.backgroundColor == S31.style.backgroundColor)) {
+        colorWin = S31.style.backgroundColor
+        alertWinner()
+    }
+    else if ((L12.style.backgroundColor != "rgb(220, 220, 220)") && (L12.style.backgroundColor == M22.style.backgroundColor) && (M22.style.backgroundColor == S32.style.backgroundColor)) {
+        colorWin = S32.style.backgroundColor
+        alertWinner()
+    }
+    else if ((L13.style.backgroundColor != "rgb(220, 220, 220)") && (L13.style.backgroundColor == M23.style.backgroundColor) && (M23.style.backgroundColor == S33.style.backgroundColor)) {
+        colorWin = S33.style.backgroundColor
+        alertWinner()
+    }
+
+    //Cross S-L
+    else if ((S11.style.backgroundColor != "rgb(220, 220, 220)") && (S11.style.backgroundColor == M22.style.backgroundColor) && (M22.style.backgroundColor == L33.style.backgroundColor)) {
+        colorWin = S11.style.backgroundColor
+        alertWinner()
+    }
+    else if ((S13.style.backgroundColor != "rgb(220, 220, 220)") && (S13.style.backgroundColor == M22.style.backgroundColor) && (M22.style.backgroundColor == L31.style.backgroundColor)) {
+        colorWin = S13.style.backgroundColor
+        alertWinner()
+    }
+
+//     //L-S
+    else if ((L11.style.backgroundColor != "rgb(220, 220, 220)") && (L11.style.backgroundColor == M22.style.backgroundColor) && (M22.style.backgroundColor == S33.style.backgroundColor)) {
+        colorWin = S33.style.backgroundColor
+        alertWinner()
+    }
+    else if ((L13.style.backgroundColor != "rgb(220, 220, 220)") && (L13.style.backgroundColor == M22.style.backgroundColor) && (M22.style.backgroundColor == S31.style.backgroundColor)) {
+        colorWin = S31.style.backgroundColor
+        alertWinner()
+    }
+// //   }
+
+// ref.on('value', (snapshot) => {
+//     alertWinner(snapshot)
+// })
+}
+
+
+
+function alertWinner(){
+    ref.child(roomCode).child('players').on('value', (snapshot) => {
+        snapshot.forEach((data) => {
+            const id = data.key
+            const name = data.val().playerName
+            const color = data.val().color
+            if(colorWin == color){
+                alert(name + ` Congratulations! You're the winner!!`)
+            }
+        })
+    })
 }

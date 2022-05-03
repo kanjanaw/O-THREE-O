@@ -16,8 +16,7 @@ function pushPieceToFirebase() {
 
         alert("done success")
         place = false
-        console.log(roomCode)
-
+        checkWinner()
     } else {
         alert('plz place your piece')
     }
@@ -26,6 +25,7 @@ function pushPieceToFirebase() {
 
 ref.on('value', (snapshot) => {
     showPiece(snapshot)
+    turnGame(snapshot)
 })
 
 

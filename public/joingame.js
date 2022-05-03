@@ -101,6 +101,5 @@ function getGameInfo(snapshot) {
 }else{
     document.getElementById("btn-start").disabled = false;
 }
-// console.log("member " + count);
 }
 
