@@ -16,6 +16,7 @@ function pushPieceToFirebase() {
 
         alert("done success")
         place = false
+        console.log(roomCode)
 
     } else {
         alert('plz place your piece')
@@ -23,14 +24,16 @@ function pushPieceToFirebase() {
 }
 
 
-ref.child(roomCode).child('gameplay').on('value', (snapshot) => {
+ref.on('value', (snapshot) => {
     showPiece(snapshot)
 })
 
 
 function showPiece(snapshot){
-
+    
+    ref.child(roomCode).child('gameplay').on('value', (snapshot) => {
     snapshot.forEach((data) => {
+        const id = data.key
         const piece = data.val().piece
         const color = data.val().color
 
@@ -38,6 +41,7 @@ function showPiece(snapshot){
         document.getElementById(piece).removeEventListener("click", selectAndDeselect)
 
     })
+})
 }
 
 

@@ -3,8 +3,14 @@ const rowTextPlzJoin = document.getElementById("text-plz-join");
 
 rowRoomSelect.style.display = "none";
 
+var roomCode = randomRoomCode()
+
 // random room code
-var roomCode = Math.random().toString(36).substring(2, 8);
+function randomRoomCode() {
+    const roomCode = Math.random().toString(36).substring(2, 8);
+    return roomCode
+}
+
 document.getElementById("room-code").innerText = "ROOM CODE:  " + roomCode;
 
 // create room
