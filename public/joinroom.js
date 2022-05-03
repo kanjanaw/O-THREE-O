@@ -64,14 +64,15 @@ function joinRoomSnap(){
 }
 
 function joinRoom(snapshot) {
-    roomCode = joinForm['input-room-code'].value;
+    var inputroomCode = joinForm['input-room-code'].value;
     var match = false
 
     snapshot. forEach((data) => {
         const room = data.key
-        if (roomCode == room){
+        if (inputroomCode == room){
             btnJoin.disabled = true
             match = true
+            roomCode = inputroomCode
             displayTextJoin(match)
         } else {
             displayTextJoin(match)
