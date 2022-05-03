@@ -1,40 +1,53 @@
 const rowRoomSelect = document.getElementById("room-select")
 const rowTextPlzJoin = document.getElementById("text-plz-join")
 
-const joinForm = document.querySelector("#login-form");
-const inputRoomCode = joinForm["input-room-code"].value;
+rowRoomSelect.style.display = 'none'
 
-joinForm.addEventListener("submit", joinRoom);
 
-// join function
-function joinRoom() {
-    
-    if(inputRoomCode != null){
-        rowRoomSelect.style.display = 'inline-block'
-    }
-}
-
-if(inputRoomCode == undefined){
-    rowRoomSelect.style.display = 'none'
-    rowTextPlzJoin.style.display = 'inline-block'
-}
 
 // random room code
-let roomCode = Math.random().toString(36).substring(2,8);
+const roomCode = Math.random().toString(36).substring(2,8);
 document.getElementById('room-code').innerText = "ROOM CODE:  " + roomCode
 
 
-
-const btnGen = document.getElementById('btn-generate')
-btnGen.addEventListener('onclick', createRoom)
-
-var roomRef = firebase.database().ref(`game/${roomCode}`)
+// create room
+const btnCreate = document.getElementById('btn-create-room')
 
 function createRoom() {
-    var user = firebase.auth().currentUser;
-    
-    roomRef.push({
-        playerId: user.id,
-        playerName: user.displayName,
+    btnCreate.disabled = true
+
+    var roomRef = firebase.database().ref(`games-room/${roomCode}`)
+
+    roomRef.set({
+       room: roomCode
     })
+
+    displayTextJoin()
+}
+
+// show text 
+function displayTextJoin(roomRef) {
+    if(btnCreate.disabled == true){
+        rowRoomSelect.style.display = ''
+        rowTextPlzJoin.style.display = 'none'
+    }
+    else if (roomRef){
+        rowRoomSelect.style.display = ''
+        rowTextPlzJoin.style.display = 'none'
+    }
+}
+
+
+const btnJoin = document.getElementById("btn-join")
+const joinForm = document.querySelector('#room-form')
+joinForm.addEventListener("submit", joinRoom)
+
+function joinRoom() {
+    const roomCode = joinForm['input-room-code'].value;
+
+    var roomRef = firebase.database().ref(`games-room/${roomCode}`)
+    if(roomRef){
+        btnJoin.disabled = true
+        displayTextJoin(roomRef)
+    }
 }

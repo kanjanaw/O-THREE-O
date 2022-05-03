@@ -83,44 +83,38 @@ function loginUser(event) {
   let playerId;
   var playerRef;
 
-  function initGame() {
-    const allPlayersRef = firebase.database().ref('players')
+  // function initGame() {
+  //   const allPlayersRef = firebase.database().ref('players')
 
-    allPlayersRef.on('value', (snapshot) => {
-      // fires whenever a change occurs
-    })
+  //   allPlayersRef.on('value', (snapshot) => {
+  //     // fires whenever a change occurs
+  //   })
 
-    allPlayersRef.on('child_added', (snapshot) => {
-      // fires whenever a new node is added the tree
-      const addedPlayer = snapshot.val()
-    })
-  }
+  //   allPlayersRef.on('child_added', (snapshot) => {
+  //     // fires whenever a new node is added the tree
+  //     const addedPlayer = snapshot.val()
+  //   })
+  // }
 
   firebase.auth().onAuthStateChanged((user) => {
-    // console.log(user)
+
     if (user) {
       // You're loged in
-      // playerId = user.uid
-      // playerRef = firebase.database().ref(`game/${roomCode}`)
+      playerId = user.uid
+      playerRef = firebase.database().ref(`games-room/${roomCode}`)
 
-      // playerRef.set({
-      //   id: playerId,
-      //   name: user.displayName,
-      //   roomid: roomCode,
-      //   color: null
-      // })
 
       //Remove me from firebase when I disconnect
-      playerRef.onDisconnect().remove()
+       playerRef.onDisconnect().remove()
       
       // setup UI
       setupUI(user)
 
       //
-      getPieceFromFirebase()
+      // getPieceFromFirebase()
 
       //Begin the game that we are signed in
-      initGame()
+      // initGame()
 
     } else {
       // log out

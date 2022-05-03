@@ -46,7 +46,7 @@
 
         <div class="col-6 p-3 d-flex flex-column align-items-center" style="border-right: solid 1px lightgrey">
           <h2 class="mb-5">Play as anonymous</h2>
-          <form action="" id="anony-form" class="">
+          <form action="" id="anony-form">
             <input type="text" class="form-control form-control-lg mb-4" id="input-username-anony" placeholder="ENTER YOUR NAME"
               style="width: 20vw;" />
             <button type="submit" class="btn-index" style="width: 20vw;">
@@ -129,27 +129,6 @@
       </div>
     </div>
   </div>
-
-  <!-- <div class="container text-center logged-in deselected-color" style="width: 70vw; height: 100vh;">
-    <div class="d-flex flex-column align-items-center justify-content-center" style="height: 95%;">
-      <h1 style="font-size: 3rem;">PICK YOUR COLOR</h1>
-      <div class="d-flex mt-3">
-        <button type="button" class="block-circle-color block-blue"
-          onclick="setColor(0)"></button>
-        <button type="button" class="block-circle-color block-green" 
-          onclick="setColor(1)"></button>
-      </div>
-      <div class="d-flex mb-4">
-        <button type="button" class="block-circle-color block-yellow"
-          onclick="setColor(2)"></button>
-        <button type="button" class="block-circle-color block-red"
-          onclick="setColor(3)"></button>
-      </div>
-      <button type="button" class="btn-game" style="width: 30%; background-color: rgb(44, 44, 44); " id="go-btn" onclick="goToBoard()">
-        GO
-      </button>
-    </div>
-  </div> -->
 
   <div class="container logged-in selected-color" style="width: 70vw; height: 100vh;">
    
@@ -276,10 +255,10 @@
       <div class="" style="margin-bottom: 1.25vw;">
         <div class="player-name-block d-flex flex-column justify-content-center">
           <div class="font-italic" style="font-weight: 900; font-size: 1.7vw; margin-top: -15px;">PLAYER</div>
-          <div class="user-profile-name" id="blue">Empty</div>
+          <!-- <div class="user-profile-name" id="blue">Empty</div>
           <div class="user-profile-name" id="green">Empty</div>
           <div class="user-profile-name" id="yellow">Empty</div>
-          <div class="user-profile-name" id="red">Empty</div>
+          <div class="user-profile-name" id="red">Empty</div> -->
         </div>
     </div>
 
@@ -335,14 +314,17 @@
 
         <div class="collapse show multi-collapse" id="collapseJoinRoom">
           <h2 class="mb-3">JOIN ROOM</h2>
-          <form action="" id="form-room">
+
+      
+
+          <form action="" id="room-form">
             <div class="form-group row">
               <div class="col-9">
-                <input type="text" class="form-control form-control-lg" placeholder="ENTER YOUR ROOM CODE" value="" id="input-room-code"
+                <input type="text" class="form-control form-control-lg" placeholder="ENTER YOUR ROOM CODE" id="input-room-code"
              />
               </div>
               <div class="col-3">
-                <button type="submit" class="btn-lg btn-block btn" style="background-color: #Ffde59;
+                <button type="submit" class="btn-lg btn-block btn" id="btn-join" style="background-color: #Ffde59;
                 color: black;
                 border-radius: 2rem;
                 font-weight: 900;
@@ -350,7 +332,6 @@
                   JOIN
                 </button>
               </div>
-            
             </div>
           </form>
         </div>
@@ -362,9 +343,13 @@
           </button></h5>
 
         <div class="collapse multi-collapse" id="collapseExample">
-          <div class="card card-body">
-            <p class="text-center" id="room-code" style="font-weight: 900; font-size: 1.7vw;">ROOM CODE: </p>
+          <div class="card text-center">
+            <div class="card-body d-flex align-items-center justify-content-center">
+              <p class="pt-1" id="room-code" style="font-weight: 900; font-size: 1.7vw;">ROOM CODE: </p>
+              <button type="button" class="btn-lg ml-5 btn-join" onclick="createRoom()" id="btn-create-room">CREATE ROOM</button>
+            </div>
           </div>
+          
         </div>
       </div>
  
@@ -395,11 +380,7 @@
             <div class="user-profile-name" id="green">Waiting for player...</div>
             <div class="user-profile-name" id="yellow">Waiting for player...</div>
             <div class="user-profile-name" id="red">Waiting for player...</div>
-            <button type="button" class="btn-lg btn mt-4" style="background-color: #Ffde59;
-            color: black;
-            border-radius: 2rem;
-            font-weight: 900;
-            font-size: 1.5rem; padding: .5rem 5rem;" id="go-btn" onclick="goToBoard()">
+            <button type="button" class="btn-lg btn mt-4 btn-join" id="btn-start" onclick="goToBoard()">
                 START
               </button>
           </div>
@@ -407,7 +388,7 @@
         
         <div class="row" id="text-plz-join">
           <div class="col-12">
-            <p class="font-italic text-center" style="font-weight: 900; font-size: 1.7vw;">PLEASE JOIN THE ROOM</p>
+            <p class="font-italic text-center" style="font-weight: 900; font-size: 1.7vw;">PLEASE JOIN OR CREATE ROOM</p>
           </div>
         </div>
 
@@ -422,23 +403,23 @@
 </body>
 
 <script>
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+ // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyADfOLCYu8dO-VzvwuM3x1No6WLjfAwFV8",
-  authDomain: "othreeo-2.firebaseapp.com",
-  databaseURL: "https://othreeo-2-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "othreeo-2",
-  storageBucket: "othreeo-2.appspot.com",
-  messagingSenderId: "540592911203",
-  appId: "1:540592911203:web:51c6e42f710a29a2255956",
-  measurementId: "G-88LTK675NL"
+  apiKey: "AIzaSyARUFxKqVywrfVbiBIxWv67UQfSWNuf8e0",
+  authDomain: "o-three-o.firebaseapp.com",
+  databaseURL: "https://o-three-o-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "o-three-o",
+  storageBucket: "o-three-o.appspot.com",
+  messagingSenderId: "301258318530",
+  appId: "1:301258318530:web:da30a08d816985d8b2915b",
+  measurementId: "G-FFGDX00QMS"
 };
   firebase.initializeApp(firebaseConfig);
 </script>
 <script src="auth.js"></script>
 <script src="app.js"></script>
 <script src="joinroom.js"></script>
-<!-- <script src="joingame.js"></script> -->
+<script src="joingame.js"></script>
 <!-- <script src="placepieces2.js"></script> -->
 <!-- <script src="pushandget.js"></script> -->
 

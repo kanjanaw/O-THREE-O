@@ -13,14 +13,15 @@ var playerColor, indexSetColor
 
 function setColor(color) {
     var user = firebase.auth().currentUser;
-    let playerRef = firebase.database().ref(`players/${user.uid}`)
+    var playerRef = firebase.database().ref(`games-room/${roomCode}/players`)
 
     playerColor = setOfColor[color];
     indexSetColor = color;
 
     // update name and color in firebase
-    playerRef.update({
-        name: user.displayName,
+    playerRef.child(indexSetColor).update({
+        playerId: user.uid,
+        playerName: user.displayName,
         color: playerColor,
     })
 
@@ -31,27 +32,68 @@ function setColor(color) {
     circlesColor.forEach((circleColor) => { circleColor.style.outline = "none"; })
     event.currentTarget.style.outline = "10px solid rgba(172, 172, 172, .6)";
 
+    setName()
+
+    circlesColor.forEach((circleColor) => { circleColor.disabled = false; })
+    circlesColor[indexSetColor].disabled = true
 }
 
 const playerNames = document.querySelectorAll(".user-profile-name");
 
 function setName() {
     const user = firebase.auth().currentUser
-    if (user) {
-        playerNames[indexSetColor].innerText = user.displayName
-        playerNames[indexSetColor].style.opacity = 1
-    } else {
-        playerNames[indexSetColor].innerText = 'Empty'
-        playerNames[indexSetColor].style.opacity = .3
-    }
-}
 
-function joinGame() {
-    const currentUser = firebase.auth().currentUser
-    if (currentUser) {
-        if (playerNames[indexSetColor].innerText == 'Empty') {
-            circlesColor[indexSetColor].disabled = true
-            setName()
+    for (let i=0; i<4; i++){
+        if (i == indexSetColor){
+            playerNames[i].innerText = user.displayName
+            playerNames[i].style.opacity = 1
+            // playerReady++
+            // console.log(playerReady)
+        }else{
+            playerNames[i].innerText = 'Waiting for player...'
+            playerNames[i].style.opacity = .3
         }
     }
+
+}
+
+var ref = firebase.database().ref(`games-room`)
+ref.on("value", (snapshot) => {
+    getGameInfo(snapshot);
+});
+
+
+function getGameInfo(snapshot) {
+
+    var playerRef = firebase.database().ref(`games-room/${roomCode}/players`)
+    
+    
+}
+
+// function joinGame() {
+//     const currentUser = firebase.auth().currentUser
+//     if (currentUser) {
+//         if (playerNames[indexSetColor].innerText == 'Empty') {
+//             circlesColor[indexSetColor].disabled = true
+//             setName()
+//         }
+//     }
+// }
+
+//check player 
+var playerReady = 0;
+
+// for (let i=0; i<4; i++){
+//     if (playerNames[i].innerText != 'Waiting for player...'){
+//         playerReady = playerReady
+//     }else{
+//         playerReady++
+//     }
+// }
+
+
+if(playerReady == 4){
+    document.getElementById("btn-start").disabled = false;
+}else{
+    document.getElementById("btn-start").disabled = true;
 }

@@ -32,7 +32,7 @@ h2,
 h3,
 h4,
 h5,
-h6, .btn-game, .btn-index, .btn-signup, input {
+h6, .btn-game, .btn-index, .btn-signup, input, .btn-join {
   font-family: "Segoe UI", Arial, sans-serif;
 }
 
@@ -186,6 +186,18 @@ a.nav-link:hover , a.nav-link:active{
   font-size: 1.4vw;
   border: none;
   padding: 0vw 2vw;
+}
+.btn-join{
+  background-color: #Ffde59;
+  color: black;
+  border: none;
+  border-radius: 2rem;
+  font-weight: 900;
+  font-size: 1.5rem; padding: .45rem 4rem;
+}
+
+.btn-join:disabled{
+  opacity: .4;
 }
 
 .player-pieces{
