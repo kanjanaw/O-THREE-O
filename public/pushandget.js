@@ -1,14 +1,13 @@
 btnDone = document.getElementById("btn-done")
 btnDone.addEventListener("click", pushPieceToFirebase);
 
-var turn = 0;
 
 function pushPieceToFirebase() {
     var user = firebase.auth().currentUser;
 
     if (place){
 
-        ref.child(roomCode).child('gameplay').child(turn).set({
+        ref.child(roomCode).child('gameplay').push({
             playerId: playerId,
             playerName: user.displayName,
             color: playerColor,
@@ -16,7 +15,6 @@ function pushPieceToFirebase() {
           })
 
         alert("done success")
-        turn++;
         place = false
 
     } else {
