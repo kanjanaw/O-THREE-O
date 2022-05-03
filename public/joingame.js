@@ -60,6 +60,7 @@ function setName() {
 var ref = firebase.database().ref(`games-room`)
 ref.on("value", (snapshot) => {
     getGameInfo(snapshot);
+    // joinRoom(snapshot);
 });
 
 

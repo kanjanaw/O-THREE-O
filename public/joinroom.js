@@ -30,24 +30,39 @@ function displayTextJoin(roomRef) {
     if(btnCreate.disabled == true){
         rowRoomSelect.style.display = ''
         rowTextPlzJoin.style.display = 'none'
+        console.log('1')
     }
     else if (roomRef){
         rowRoomSelect.style.display = ''
         rowTextPlzJoin.style.display = 'none'
+        console.log('2')
+    }else {
+        rowRoomSelect.style.display = 'none'
+        rowTextPlzJoin.style.display = ''
+        console.log('3')
     }
 }
 
 
 const btnJoin = document.getElementById("btn-join")
 const joinForm = document.querySelector('#room-form')
-joinForm.addEventListener("submit", joinRoom)
+joinForm.addEventListener("submit", joinRoomSnap)
 
-function joinRoom() {
+function joinRoomSnap(){
+    var ref = firebase.database().ref(`games-room`)
+    ref.on("value", (snapshot) => {
+        joinRoom(snapshot);
+    });
+}
+
+function joinRoom(snapshot) {
     const roomCode = joinForm['input-room-code'].value;
 
-    var roomRef = firebase.database().ref(`games-room/${roomCode}`)
-    if(roomRef){
-        btnJoin.disabled = true
-        displayTextJoin(roomRef)
-    }
+    snapshot. forEach((data) => {
+        const room = data.key
+        if (roomCode == room){
+            btnJoin.disabled = true
+            displayTextJoin(room)
+        }           
+    });
 }
