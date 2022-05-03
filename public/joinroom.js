@@ -59,6 +59,7 @@ function joinRoomSnap() {
 }
 
 function joinRoom(snapshot) {
+  let count = 0;
 
   var inputroomCode = joinForm["input-room-code"].value;
   var match = false;
@@ -68,7 +69,7 @@ function joinRoom(snapshot) {
     if (inputroomCode == room) {
       btnJoin.disabled = true;
       match = true;
-      roomCode = inputroomCode
+      roomCode = inputroomCode;
       displayTextJoin(match);
       ref
         .child(roomCode)
@@ -80,9 +81,16 @@ function joinRoom(snapshot) {
             console.log("color code : " + color);
             console.log("name : " + name);
             playerNames[color].innerText = name;
-            playerNames[color].style.opacity = 1
+            playerNames[color].style.opacity = 1;
+            count++;
           });
         });
+      if (count < 4) {
+        document.getElementById("btn-start").disabled = true;
+      } else {
+        document.getElementById("btn-start").disabled = false;
+      }
+      console.log("member " + count);
     } else {
       displayTextJoin(match);
     }

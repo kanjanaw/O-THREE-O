@@ -70,6 +70,7 @@ ref.on("value", (snapshot) => {
 });
 
 function getGameInfo(snapshot) {
+    let count = 0
     snapshot.forEach(function (roomSnapshot) {
     var key = roomSnapshot.key;
     if (key == roomCode) {
@@ -84,10 +85,17 @@ function getGameInfo(snapshot) {
                 console.log("name : "+ name);
                 playerNames[color].innerText = name;
                 playerNames[color].style.opacity = 1
+                count++
               });  
         });
     }
   });
+  if(count<4){
+    document.getElementById("btn-start").disabled = true;
+}else{
+    document.getElementById("btn-start").disabled = false;
+}
+console.log("member " + count);
 }
 
 // function joinGame() {
