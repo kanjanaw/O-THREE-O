@@ -15,6 +15,8 @@ const btnCreate = document.getElementById('btn-create-room')
 
 function createRoom() {
     btnCreate.disabled = true
+    btnJoin.disabled = true
+    joinForm['input-room-code'].value = roomCode
 
     var roomRef = firebase.database().ref(`games-room/${roomCode}`)
 
