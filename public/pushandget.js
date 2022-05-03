@@ -23,7 +23,6 @@ function pushPieceToFirebase() {
 }
 
 
-
 ref.child(roomCode).child('gameplay').on('value', (snapshot) => {
     showPiece(snapshot)
 })
@@ -32,7 +31,6 @@ ref.child(roomCode).child('gameplay').on('value', (snapshot) => {
 function showPiece(snapshot){
 
     snapshot.forEach((data) => {
-        turn = data.key
         const piece = data.val().piece
         const color = data.val().color
 
