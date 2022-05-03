@@ -58,6 +58,7 @@ function joinRoomSnap() {
   });
 }
 
+
 function joinRoom(snapshot) {
   let count = 0;
 
@@ -85,6 +86,9 @@ function joinRoom(snapshot) {
             circlesColor[color].disabled = true;
             circlesColor[color].style.outline =
               "10px solid rgba(172, 172, 172, .6)";
+
+            playerNamesInGame[color].innerText = name;
+
             count++;
           });
         });

@@ -41,7 +41,8 @@ function setColor(color) {
     //     playerPiece.style.backgroundColor = setOfColor[color];
     // })
 
-    setName()
+    circlesColor.forEach((circleColor) => { circleColor.disabled = false; })
+    circlesColor[indexSetColor].disabled = true
 
     pushPlayers(color, playerColor)
 }
@@ -61,24 +62,7 @@ function pushPlayers(indexSetColor, playerColor){
 }
 
 const playerNames = document.querySelectorAll(".user-profile-name");
-
-function setName() {
-    const user = firebase.auth().currentUser
-
-    for (let i=0; i<4; i++){
-        if (i == indexSetColor){
-            playerNames[i].innerText = user.displayName
-            playerNames[i].style.opacity = 1
-            // playerReady++
-            // console.log(playerReady)
-        }
-        // else{
-        //     playerNames[i].innerText = 'Waiting for player...'
-        //     playerNames[i].style.opacity = .3
-        // }
-    }
-
-}
+const playerNamesInGame = document.querySelectorAll(".user-profile-name-b");
 
 var ref = firebase.database().ref(`games-room`);
 ref.on("value", (snapshot) => {
@@ -101,8 +85,12 @@ function getGameInfo(snapshot) {
                 console.log("name : "+ name);
                 playerNames[color].innerText = name;
                 playerNames[color].style.opacity = 1
+
                 circlesColor[color].disabled = true
                 circlesColor[color].style.outline = "10px solid rgba(172, 172, 172, .6)";
+
+                playerNamesInGame[color].innerText = name;
+
                 count++
               });  
         });
@@ -127,7 +115,7 @@ console.log("member " + count);
 // }
 
 //check player 
-var playerReady = 0;
+
 
 // for (let i=0; i<4; i++){
 //     if (playerNames[i].innerText != 'Waiting for player...'){
@@ -138,8 +126,3 @@ var playerReady = 0;
 // }
 
 
-if(playerReady == 4){
-    document.getElementById("btn-start").disabled = false;
-}else{
-    document.getElementById("btn-start").disabled = true;
-}
