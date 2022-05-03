@@ -37,9 +37,9 @@ function setColor(color) {
     playerColor = setOfColor[color];
     indexSetColor = color;
    
-    // playerPieces.forEach((playerPiece) => {
-    //     playerPiece.style.backgroundColor = setOfColor[color];
-    // })
+    playerPieces.forEach((playerPiece) => {
+        playerPiece.style.backgroundColor = setOfColor[color];
+    })
 
     circlesColor.forEach((circleColor) => { circleColor.disabled = false; })
     circlesColor[indexSetColor].disabled = true
