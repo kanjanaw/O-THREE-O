@@ -33,10 +33,11 @@ function setColor(color) {
 
 function pushPlayers(indexSetColor, playerColor){
     var user = firebase.auth().currentUser;
+    
     var playerRef = firebase.database().ref(`games-room/${roomCode}/players`)
 
      // update name and color in firebase
-     playerRef.child(indexSetColor).push({
+     playerRef.child(indexSetColor).set({
         playerId: user.uid,
         playerName: user.displayName,
         color: playerColor,

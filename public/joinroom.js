@@ -6,7 +6,7 @@ rowRoomSelect.style.display = 'none'
 
 
 // random room code
-const roomCode = Math.random().toString(36).substring(2,8);
+var roomCode = Math.random().toString(36).substring(2,8);
 document.getElementById('room-code').innerText = "ROOM CODE:  " + roomCode
 
 
@@ -64,7 +64,7 @@ function joinRoomSnap(){
 }
 
 function joinRoom(snapshot) {
-    const roomCode = joinForm['input-room-code'].value;
+    roomCode = joinForm['input-room-code'].value;
     var match = false
 
     snapshot. forEach((data) => {
