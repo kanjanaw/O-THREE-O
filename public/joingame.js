@@ -81,8 +81,8 @@ function getGameInfo(snapshot) {
             playerSnapshot.forEach((playerInfo) => {
                 var color = playerInfo.key
                 var name = playerInfo.val().playerName
-                console.log("color code : "+color)
-                console.log("name : "+ name);
+                // console.log("color code : "+color)
+                // console.log("name : "+ name);
                 playerNames[color].innerText = name;
                 playerNames[color].style.opacity = 1
 
@@ -101,28 +101,6 @@ function getGameInfo(snapshot) {
 }else{
     document.getElementById("btn-start").disabled = false;
 }
-console.log("member " + count);
+// console.log("member " + count);
 }
-
-// function joinGame() {
-//     const currentUser = firebase.auth().currentUser
-//     if (currentUser) {
-//         if (playerNames[indexSetColor].innerText == 'Empty') {
-//             circlesColor[indexSetColor].disabled = true
-//             setName()
-//         }
-//     }
-// }
-
-//check player 
-
-
-// for (let i=0; i<4; i++){
-//     if (playerNames[i].innerText != 'Waiting for player...'){
-//         playerReady = playerReady
-//     }else{
-//         playerReady++
-//     }
-// }
-
 

@@ -29,20 +29,16 @@ function displayTextJoin(match) {
   if (btnCreate.disabled == true) {
     rowRoomSelect.style.display = "";
     rowTextPlzJoin.style.display = "none";
-    console.log("1");
   } else if (match == true) {
     rowRoomSelect.style.display = "";
     rowTextPlzJoin.style.display = "none";
-    console.log("2");
   } else if (match == false) {
     rowRoomSelect.style.display = "none";
     document.getElementById("p-plz-join").innerText = "THE ROOM IS NOT EXIST";
     rowTextPlzJoin.style.display = "";
-    console.log("3");
   } else {
     rowRoomSelect.style.display = "none";
     rowTextPlzJoin.style.display = "";
-    console.log("4");
   }
 }
 
@@ -79,8 +75,8 @@ function joinRoom(snapshot) {
           playerSnapshot.forEach((playerInfo) => {
             var color = playerInfo.key;
             var name = playerInfo.val().playerName;
-            console.log("color code : " + color);
-            console.log("name : " + name);
+            // console.log("color code : " + color);
+            // console.log("name : " + name);
             playerNames[color].innerText = name;
             playerNames[color].style.opacity = 1;
             circlesColor[color].disabled = true;
@@ -97,7 +93,7 @@ function joinRoom(snapshot) {
       } else {
         document.getElementById("btn-start").disabled = false;
       }
-      console.log("member " + count);
+    //   console.log("member " + count);
     } else {
       displayTextJoin(match);
     }

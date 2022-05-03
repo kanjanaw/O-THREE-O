@@ -25,24 +25,22 @@ function pushPieceToFirebase() {
 }
 
 
-// const pieceId = document.getElementById(gameRef.piece)
-// console.log(pieceId)
 
-function getPieceFromFirebase() {
-    ref.child(roomCode).child('gameplay').on('value', (snapshot) => {
-        showPiece(snapshot)
-    })
-}
+ref.child(roomCode).child('gameplay').on('value', (snapshot) => {
+    showPiece(snapshot)
+})
+
 
 function showPiece(snapshot){
+
     snapshot.forEach((data) => {
+        turn = data.key
         const piece = data.val().piece
         const color = data.val().color
 
         document.getElementById(piece).style.backgroundColor = color
         document.getElementById(piece).removeEventListener("click", selectAndDeselect)
 
-        
     })
 }
 

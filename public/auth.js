@@ -46,8 +46,6 @@ btnLogout.addEventListener("click", () => {
   } else {
     anonyForm.reset()
   }
- // roomRef.remove()
-  setName()
   setupUI()
 });
 
