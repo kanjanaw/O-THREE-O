@@ -12,19 +12,9 @@ const setOfColor = [
 var playerColor, indexSetColor
 
 function setColor(color) {
-    var user = firebase.auth().currentUser;
-    var playerRef = firebase.database().ref(`games-room/${roomCode}/players`)
-
     playerColor = setOfColor[color];
     indexSetColor = color;
-
-    // update name and color in firebase
-    playerRef.child(indexSetColor).update({
-        playerId: user.uid,
-        playerName: user.displayName,
-        color: playerColor,
-    })
-
+   
     playerPieces.forEach((playerPiece) => {
         playerPiece.style.backgroundColor = setOfColor[color];
     })
@@ -36,6 +26,21 @@ function setColor(color) {
 
     circlesColor.forEach((circleColor) => { circleColor.disabled = false; })
     circlesColor[indexSetColor].disabled = true
+
+    pushPlayers(color, playerColor)
+}
+
+
+function pushPlayers(indexSetColor, playerColor){
+    var user = firebase.auth().currentUser;
+    var playerRef = firebase.database().ref(`games-room/${roomCode}/players`)
+
+     // update name and color in firebase
+     playerRef.child(indexSetColor).push({
+        playerId: user.uid,
+        playerName: user.displayName,
+        color: playerColor,
+    })
 }
 
 const playerNames = document.querySelectorAll(".user-profile-name");

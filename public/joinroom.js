@@ -76,5 +76,6 @@ function joinRoom(snapshot) {
         } else {
             displayTextJoin(match)
         }
+    // console.log(data.val())
     });
 }
