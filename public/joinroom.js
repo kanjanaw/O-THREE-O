@@ -26,20 +26,25 @@ function createRoom() {
 }
 
 // show text 
-function displayTextJoin(roomRef) {
+function displayTextJoin(match) {
     if(btnCreate.disabled == true){
         rowRoomSelect.style.display = ''
         rowTextPlzJoin.style.display = 'none'
         console.log('1')
     }
-    else if (roomRef){
+    else if (match == true){
         rowRoomSelect.style.display = ''
         rowTextPlzJoin.style.display = 'none'
         console.log('2')
-    }else {
+    }else if(match == false){
         rowRoomSelect.style.display = 'none'
+        document.getElementById('p-plz-join').innerText = 'THE ROOM IS NOT EXIST'
         rowTextPlzJoin.style.display = ''
         console.log('3')
+    }else{
+        rowRoomSelect.style.display = 'none'
+        rowTextPlzJoin.style.display = ''
+        console.log('4')
     }
 }
 
@@ -49,6 +54,7 @@ const joinForm = document.querySelector('#room-form')
 joinForm.addEventListener("submit", joinRoomSnap)
 
 function joinRoomSnap(){
+    event.preventDefault()
     var ref = firebase.database().ref(`games-room`)
     ref.on("value", (snapshot) => {
         joinRoom(snapshot);
@@ -57,12 +63,16 @@ function joinRoomSnap(){
 
 function joinRoom(snapshot) {
     const roomCode = joinForm['input-room-code'].value;
+    var match = false
 
     snapshot. forEach((data) => {
         const room = data.key
         if (roomCode == room){
             btnJoin.disabled = true
-            displayTextJoin(room)
-        }           
+            match = true
+            displayTextJoin(match)
+        } else {
+            displayTextJoin(match)
+        }
     });
 }

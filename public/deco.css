@@ -254,3 +254,7 @@ a.nav-link:hover , a.nav-link:active{
 #red{
   color: rgb(255, 109, 109);
 }
+
+.text-join-page{
+  font-weight: 900; font-size: 1.7vw;
+}

@@ -317,8 +317,8 @@
 
       
 
-          <form action="" id="room-form">
-            <div class="form-group row">
+          <form action="" id="room-form" >
+            <div class="form-group row" >
               <div class="col-9">
                 <input type="text" class="form-control form-control-lg" placeholder="ENTER YOUR ROOM CODE" id="input-room-code"
              />
@@ -353,44 +353,46 @@
         </div>
       </div>
  
-      <div class="block-room row d-flex align-items-center justify-content-center">
-        
-        <div class="row" id="room-select">
-          <div class="col-7" style="border-right: solid 1px lightgrey">
-            <div class="d-flex flex-column align-items-center justify-content-center">
-              <p class="font-italic" style="font-weight: 900; font-size: 1.7vw;">PICK YOUR COLOR</p>
-              <div class="d-flex">
-                <button type="button" class="block-circle-color block-blue"
-                  onclick="setColor(0)"></button>
-                <button type="button" class="block-circle-color block-green" 
-                  onclick="setColor(1)"></button>
-              </div>
-              <div class="d-flex mb-3">
-                <button type="button" class="block-circle-color block-yellow"
-                  onclick="setColor(2)"></button>
-                <button type="button" class="block-circle-color block-red"
-                  onclick="setColor(3)"></button>
+      <div class=" row ">
+        <div class="col-12 block-room d-flex align-items-center justify-content-center">
+          <div class="row" id="room-select" style="width: 100%;">
+            <div class="col-7" style="border-right: solid 1px lightgrey">
+              <div class="d-flex flex-column align-items-center justify-content-center">
+                <p class="font-italic" style="font-weight: 900; font-size: 1.7vw;">PICK YOUR COLOR</p>
+                <div class="d-flex">
+                  <button type="button" class="block-circle-color block-blue"
+                    onclick="setColor(0)"></button>
+                  <button type="button" class="block-circle-color block-green" 
+                    onclick="setColor(1)"></button>
+                </div>
+                <div class="d-flex mb-3">
+                  <button type="button" class="block-circle-color block-yellow"
+                    onclick="setColor(2)"></button>
+                  <button type="button" class="block-circle-color block-red"
+                    onclick="setColor(3)"></button>
+                </div>
               </div>
             </div>
+    
+            <div class="col-5 d-flex flex-column align-items-center text-center">
+              <p class="font-italic" style="font-weight: 900; font-size: 1.7vw;">PLAYER</p>
+              <div class="user-profile-name" id="blue">Waiting for player...</div>
+              <div class="user-profile-name" id="green">Waiting for player...</div>
+              <div class="user-profile-name" id="yellow">Waiting for player...</div>
+              <div class="user-profile-name" id="red">Waiting for player...</div>
+              <button type="button" class="btn-lg btn mt-4 btn-join" id="btn-start" onclick="goToBoard()">
+                  START
+                </button>
+            </div>
           </div>
-  
-          <div class="col-5 d-flex flex-column align-items-center text-center">
-            <p class="font-italic" style="font-weight: 900; font-size: 1.7vw;">PLAYER</p>
-            <div class="user-profile-name" id="blue">Waiting for player...</div>
-            <div class="user-profile-name" id="green">Waiting for player...</div>
-            <div class="user-profile-name" id="yellow">Waiting for player...</div>
-            <div class="user-profile-name" id="red">Waiting for player...</div>
-            <button type="button" class="btn-lg btn mt-4 btn-join" id="btn-start" onclick="goToBoard()">
-                START
-              </button>
+          
+          <div class="row" id="text-plz-join">
+            <div class="col-12">
+              <p class="font-italic text-center text-join-page" id="p-plz-join">PLEASE JOIN OR CREATE ROOM</p>
+            </div>
           </div>
         </div>
         
-        <div class="row" id="text-plz-join">
-          <div class="col-12">
-            <p class="font-italic text-center" style="font-weight: 900; font-size: 1.7vw;">PLEASE JOIN OR CREATE ROOM</p>
-          </div>
-        </div>
 
       </div>
            
