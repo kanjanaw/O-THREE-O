@@ -1,15 +1,14 @@
 btnDone = document.getElementById("btn-done")
 btnDone.addEventListener("click", pushPieceToFirebase);
 
-var turn = 1;
-var roomRef = firebase.database().ref('game/room')
+var turn = 0;
 
 function pushPieceToFirebase() {
     var user = firebase.auth().currentUser;
 
     if (place){
 
-        roomRef.push({
+        ref.child(roomCode).child('gameplay').child(turn).set({
             playerId: playerId,
             playerName: user.displayName,
             color: playerColor,
@@ -30,7 +29,7 @@ function pushPieceToFirebase() {
 // console.log(pieceId)
 
 function getPieceFromFirebase() {
-    roomRef.on('value', (snapshot) => {
+    ref.child(roomCode).child('gameplay').on('value', (snapshot) => {
         showPiece(snapshot)
     })
 }

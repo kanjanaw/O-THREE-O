@@ -165,6 +165,12 @@ a.nav-link:hover , a.nav-link:active{
   opacity: .3;
 }
 
+.user-profile-name-b{
+  width: 100%;
+  font-weight: 650;
+  opacity: .3;
+}
+
 
 .btn-game {
   background-color: #8c52ff;
@@ -240,7 +246,7 @@ a.nav-link:hover , a.nav-link:active{
 }
 
 #blue{
-  color: rgb(109, 187, 255)
+  color: rgb(109, 187, 255);
 }
 
 #green{
