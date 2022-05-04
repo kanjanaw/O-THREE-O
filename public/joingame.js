@@ -12,7 +12,7 @@ const setOfColor = [
 circlesColor.forEach((circleColor) => { circleColor.style.outline = "none"; })
 circlesColor.forEach((circleColor) => { circleColor.disabled = false; })
 
-var playerColor, indexSetColor
+var playerColor, indexSetColor = 0
 
 // function setColor(color) {
 //     playerColor = setOfColor[color];

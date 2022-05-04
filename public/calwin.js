@@ -283,7 +283,6 @@ function checkWinner() {
 }
 
 
-
 function alertWinner(){
     ref.child(roomCode).child('players').on('value', (snapshot) => {
         snapshot.forEach((data) => {
@@ -291,7 +290,7 @@ function alertWinner(){
             const name = data.val().playerName
             const color = data.val().color
             if(colorWin == color){
-                alert(name + ` Congratulations! You're the winner!!`)
+                alert(name + ` Congratulations! ` + name +`s the winner!!`)
             }
         })
     })

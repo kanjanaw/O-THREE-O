@@ -1,17 +1,21 @@
 const btnRestart = document.getElementsByClassName("btn-game")[1]
 btnRestart.disabled = true
 
-var currentPlayer
 
 function turnGame(snapshot) {
-   var curPlayer;
-    ref.child(roomCode).once("value", (snapshot) => {
-        curPlayer = snapshot.val().currentPlayer;
-
+   let curPlayer;
+    ref.child(roomCode).on("value", (snapshot) => {
+        snapshot.forEach((data) => {
+            curPlayer = snapshot.val().currentPlayer;
+        })
+        
+        
         if(playerColor == curPlayer){
             btnDoneClass.disabled = false;
+            playerNamesInGame[indexSetColor].style.opacity = 1;
         }else{
             btnDoneClass.disabled = true;
+            playerNamesInGame[indexSetColor].style.opacity = .3;
         }
     });
     
