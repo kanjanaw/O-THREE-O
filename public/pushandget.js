@@ -27,7 +27,7 @@ function pushPieceToFirebase() {
        
         alert("done success");
       place = false;
-      checkWinner()
+      // checkWinner()
       } else if (curPlayer == "rgb(25, 212, 184)" && curPlayer == playerColor) {
         ref.child(roomCode).child("gameplay").push({
           playerId: playerId,
@@ -41,7 +41,7 @@ function pushPieceToFirebase() {
    
         alert("done success");
       place = false;
-      checkWinner()
+      // checkWinner()
       } else if (curPlayer == "rgb(255, 222, 89)" && curPlayer == playerColor) {
         ref.child(roomCode).child("gameplay").push({
           playerId: playerId,
@@ -55,7 +55,7 @@ function pushPieceToFirebase() {
 
         alert("done success");
       place = false;
-      checkWinner()
+      // checkWinner()
       } else if (curPlayer == "rgb(255, 109, 109)" && curPlayer == playerColor) {
         ref.child(roomCode).child("gameplay").push({
           playerId: playerId,
@@ -69,7 +69,7 @@ function pushPieceToFirebase() {
  
         alert("done success");
       place = false;
-      checkWinner()
+      // checkWinner()
       }
       else{
           alert("not your turn")
@@ -102,6 +102,7 @@ function showPiece(snapshot){
 
     })
 })
+checkWinner()
 }
 
 
