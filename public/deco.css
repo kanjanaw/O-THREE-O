@@ -36,28 +36,29 @@ h6, .btn-game, .btn-index, .btn-signup, input, .btn-join {
   font-family: "Segoe UI", Arial, sans-serif;
 }
 
-a, a:link, a.nav-link, a.nav-link:hover{
+a, a:link, a.nav-link, a.nav-link:hover, .navbar-light, .navbar-nav, .nav-link, .link{
   font-weight: 900;
   font-size: 1.3rem;
   text-decoration: underline;
   color: #8c52ff;
+  padding: .5rem 1.5rem;
 }
 
-a.nav-link:hover , a.nav-link:active{
+.nav-link:hover , .nav-link:active, .narbar-nav:hover, .link:hover{
   color: #ffde59;
   background-color: #8c52ff;
 }
 
 .boardgame{
     background-color: #F1F1F1;
-    border-radius: 4.5vw;
+    border-radius: 50px;
     width: 100%;
-    height: 37vw;
+    height: 100%;
     display: grid;
-    column-gap: 1vw;
-    row-gap: 1vw;
+    column-gap: 1rem;
+    row-gap: 1rem;
     grid-template-columns: auto auto auto;
-    padding: 2vw;
+    padding: 1.25rem;
 }
 
 .boardgame-pieces{
@@ -65,6 +66,7 @@ a.nav-link:hover , a.nav-link:active{
   border-radius: 50%;
   cursor: pointer;
 }
+
 
 .boardgame-item-L{
     height: auto;
@@ -116,36 +118,35 @@ a.nav-link:hover , a.nav-link:active{
 
 .piece-block{
     background-color: #F1f1f1;
-    border-radius:2.7vw;
+    border-radius:35px;
     width: 100%;
-    height: 10.5vw;
+    height: 9vw;
     display: grid;
-    column-gap: 1vw;
-    row-gap: 1vw;
+    column-gap: .75rem;
+    row-gap: .75rem;
     grid-template-columns: auto auto auto;
-    padding: 2vw;
+    padding: 1rem .75rem;
 }
 .time-block{
     background-color: #Ffde59;
     border-radius: 80px;
     width: 100%;
-    height: 6vw;
+    height: max-content;
     color: #8c52ff;
     font-weight: 900;
-    font-size: 2.8rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    font-size: 2.5rem;
+    align-self: center;
+    text-align: center;
 }
 .player-name-block{
   background-color: rgb(52, 52, 52);
   color: white;
-  border-radius: 2.7vw;
+  border-radius: 35px;
   width: 100%;
-  height: 12vw;
-  font-size: 1.25rem;
+  height: max-content;
   width: 100%;
   text-align: center;
+  padding: 1rem 0;
 }
 
 .block-room{
@@ -162,6 +163,10 @@ a.nav-link:hover , a.nav-link:active{
   font-weight: 650;
   opacity: .3;
   font-size: 1.5rem;
+}
+
+.user-profile-name-b{
+  font-size: 1.7rem;
 }
 
 .btn-game {
@@ -315,24 +320,34 @@ a.nav-link:hover , a.nav-link:active{
 
 #ol-board{
   width: 65%;
+  height: 75%;
 }
 
 #play-anony, #pick-color-box{
   border-right: solid 1px lightgrey;
 }
-#index-login, #join-room-page{
+#index-login, #join-room-page, #game-page{
   width: 70%;
+}
+
+#gp-left-side{
+  width: 55%;
+}
+
+#gp-right-side{
+  width: 36%;
 }
 
 @media screen and (max-width: 992px) {
   #ol-board{
     width: 100%;
+    height: 90%;
   }
   #play-anony, #pick-color-box{
     border-bottom: solid 1px lightgrey;
     border-right: none
   }
-  #index-login, #join-room-page{
+  #index-login, #join-room-page, #game-page{
     width: 100%;
   }
   .block-circle-color{
@@ -342,5 +357,8 @@ a.nav-link:hover , a.nav-link:active{
     width: auto;
     height: auto;
     border: 3px solid black;
+  }
+  #gp-left-side, #gp-right-side{
+    width: 100%;
   }
 }

@@ -1,7 +1,7 @@
 const btnDone = document.getElementById("btn-done");
 btnDone.addEventListener("click", pushPieceToFirebase);
 
-const btnDoneClass = document.getElementsByClassName("btn-game")[2];
+const btnDoneClass = document.getElementsByClassName("btn-game")[1];
 
 function pushPieceToFirebase() {
   var user = firebase.auth().currentUser;
