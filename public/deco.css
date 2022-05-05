@@ -264,3 +264,27 @@ a.nav-link:hover , a.nav-link:active{
 .text-join-page{
   font-weight: 900; font-size: 1.7vw;
 }
+
+.overlay{
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+}
+
+.overlay > div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2.5em 0em;
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 30px;
+  /* backdrop-filter: blur(8px); */
+}
+
+#overlay-done, #overlay-place, #overlay-turn{
+  display: none;
+}

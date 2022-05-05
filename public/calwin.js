@@ -275,11 +275,6 @@ function checkWinner() {
         colorWin = S31.style.backgroundColor
         alertWinner()
     }
-// //   }
-
-// ref.on('value', (snapshot) => {
-//     alertWinner(snapshot)
-// })
 }
 
 
