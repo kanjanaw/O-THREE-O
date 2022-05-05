@@ -4,6 +4,9 @@ const loginItems = document.querySelectorAll(".logged-in");
 const selectedColor = document.querySelectorAll(".selected-color");
 const deselectedColor = document.querySelectorAll(".deselected-color");
 
+loginItems.forEach((item) => (item.style.display = "none"));
+logoutItems.forEach((item) => (item.style.display = "block"));
+
 function setupUI(user) {
   if (user) {
     loginItems.forEach((item) => (item.style.display = "block"));

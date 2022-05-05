@@ -68,6 +68,7 @@ function loginUser(event) {
       loginFeedback.style = "color:green";
       loginFeedback.innerHTML = '<i class="bi bi-check-circle-fill"></i> login completed.';
       setTimeout(function () {loginModal.hide(), console.log(loginModal);}, 1000);
+      firebaseAuth()
     })
     .catch((error) => {
       loginFeedback.style = "color:crimson";
@@ -94,6 +95,7 @@ function loginUser(event) {
   //   })
   // }
 
+function firebaseAuth() {
   firebase.auth().onAuthStateChanged((user) => {
 
     if (user) {
@@ -120,6 +122,7 @@ function loginUser(event) {
     }
      
   });
+}
 
 
 
@@ -138,6 +141,7 @@ function anonyUser(event) {
         }) 
 
       // setup UI
+      firebaseAuth()
       setupUI(user)
 
      })
