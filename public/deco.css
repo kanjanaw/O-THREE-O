@@ -38,7 +38,7 @@ h6, .btn-game, .btn-index, .btn-signup, input, .btn-join {
 
 a, a:link, a.nav-link, a.nav-link:hover{
   font-weight: 900;
-  font-size: 1.3vw;
+  font-size: 1.3rem;
   text-decoration: underline;
   color: #8c52ff;
 }
@@ -132,7 +132,7 @@ a.nav-link:hover , a.nav-link:active{
     height: 6vw;
     color: #8c52ff;
     font-weight: 900;
-    font-size: 2.8vw;
+    font-size: 2.8rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -143,7 +143,7 @@ a.nav-link:hover , a.nav-link:active{
   border-radius: 2.7vw;
   width: 100%;
   height: 12vw;
-  font-size: 1.25vw;
+  font-size: 1.25rem;
   width: 100%;
   text-align: center;
 }
@@ -151,55 +151,46 @@ a.nav-link:hover , a.nav-link:active{
 .block-room{
   background-color: rgb(245, 245, 245);
   color: black;
-  border-radius: 2vw;
-  width: 100%;
-  height: 50vh;
-  font-size: 1.25vw;
-  padding-top: 25px;
-  padding-bottom: 25px;
+  border-radius: 30px;
+  min-height: 50vh;
+  max-height: max-content;
+  font-size: 1.25rem;
 }
 
-.user-profile-name{
+.user-profile-name, .user-profile-name-b{
   width: 100%;
   font-weight: 650;
   opacity: .3;
+  font-size: 1.5rem;
 }
-
-.user-profile-name-b{
-  width: 100%;
-  font-weight: 650;
-  opacity: .3;
-}
-
 
 .btn-game {
   background-color: #8c52ff;
   color: #Ffde59;
-  height: calc(37vw - 7.5vw - 26vw);
   border-radius: 50px;
   font-weight: 900;
-  font-size: 1.4vw;
+  font-size: 1.55rem;
   border: none;
-  padding: 0vw 2vw;
+  padding: .7rem 2rem;
 }
 
 .btn-index{
   background-color: #Ffde59;
   color: black;
-  height: calc(37vw - 7.5vw - 26vw);
   border-radius: 50px;
   font-weight: 900;
-  font-size: 1.4vw;
+  font-size: 1.55rem;
   border: none;
-  padding: 0vw 2vw;
+  padding: .7rem 2rem;
 }
 .btn-join{
   background-color: #Ffde59;
   color: black;
-  border: none;
-  border-radius: 2rem;
+  border-radius: 50px;
   font-weight: 900;
-  font-size: 1.5rem; padding: .45rem 4rem;
+  font-size: 1.55rem;
+  border: none;
+  padding: .7rem 4rem;
 }
 
 .btn-join:disabled, .btn-game:disabled{
@@ -213,8 +204,8 @@ a.nav-link:hover , a.nav-link:active{
 }
 
 .block-circle-color{
-  margin: .45vw;
-  padding: 3vw;
+  margin: .55vw;
+  padding: 3.5vw;
   border-radius: 50%;
   width: auto;
   height: auto;
@@ -262,7 +253,12 @@ a.nav-link:hover , a.nav-link:active{
 }
 
 .text-join-page{
-  font-weight: 900; font-size: 1.7vw;
+  font-weight: 900; 
+  font-size: 1.7rem;
+}
+
+.text-leaderboard{
+  font-weight: 800;
 }
 
 .overlay{
@@ -271,7 +267,8 @@ a.nav-link:hover , a.nav-link:active{
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 999;
+  z-index: 9;
+  backdrop-filter: blur(4px);
 }
 
 .overlay > div {
@@ -279,12 +276,71 @@ a.nav-link:hover , a.nav-link:active{
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 2.5em 0em;
+  width: max-content;
+  height: max-content;
   background-color: rgba(255, 255, 255, 1);
   border-radius: 30px;
-  /* backdrop-filter: blur(8px); */
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
-#overlay-done, #overlay-place, #overlay-turn{
+.overlay-board{
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  backdrop-filter: blur(4px);
+  background-color: rgba(80, 80, 80, 0.25);
+}
+
+.overlay-board > .board {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  padding: 2.5rem;
+  position: relative;
+}
+
+#overlay-done, #overlay-place, #overlay-turn, #overlay-board{
   display: none;
+}
+
+.text-alert{
+  font-weight: 800;
+}
+
+#ol-board{
+  width: 65%;
+}
+
+#play-anony, #pick-color-box{
+  border-right: solid 1px lightgrey;
+}
+#index-login, #join-room-page{
+  width: 70%;
+}
+
+@media screen and (max-width: 992px) {
+  #ol-board{
+    width: 100%;
+  }
+  #play-anony, #pick-color-box{
+    border-bottom: solid 1px lightgrey;
+    border-right: none
+  }
+  #index-login, #join-room-page{
+    width: 100%;
+  }
+  .block-circle-color{
+    margin: .35rem;
+    padding: 2rem;
+    border-radius: 50%;
+    width: auto;
+    height: auto;
+    border: 3px solid black;
+  }
 }

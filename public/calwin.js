@@ -285,8 +285,25 @@ function alertWinner(){
             const name = data.val().playerName
             const color = data.val().color
             if(colorWin == color){
-                alert(name + ` Congratulations! ` + name +`s the winner!!`)
+                leaderBoard(name, color)
+            }else{
+                playerList(name, color)
             }
         })
     })
+}
+
+const leaderBoardName = document.getElementsByClassName('text-leaderboard')
+var index = 2
+
+function leaderBoard(name, color) {
+    document.getElementById("overlay-board").style.display = "block";
+    leaderBoardName[1].innerText = '👑 ' + name + ' 👑'
+    leaderBoardName[1].style.color = color
+}
+
+function playerList(name, color){
+    leaderBoardName[index].innerText = name
+    leaderBoardName[index].style.color = color
+    index++
 }

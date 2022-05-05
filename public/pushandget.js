@@ -103,15 +103,19 @@ function showPiece(snapshot) {
 
 function doneSuccess() {
   document.getElementById("overlay-done").style.display = "block";
-  setTimeout(() => { document.getElementById("overlay-done").style.display = "none";}, 1200);
+  setTimeout(() => { document.getElementById("overlay-done").style.display = "none";}, 1000);
 }
 
 function placeYourPieces() {
   document.getElementById("overlay-place").style.display = "block";
-  setTimeout(() => { document.getElementById("overlay-place").style.display = "none"; }, 1200);
+  setTimeout(() => { document.getElementById("overlay-place").style.display = "none"; }, 1000);
 }
 
 function notYourTurn() {
   document.getElementById("overlay-turn").style.display = "block";
-  setTimeout(() => { document.getElementById("overlay-turn").style.display = "none"; }, 1200);
+  setTimeout(() => { document.getElementById("overlay-turn").style.display = "none"; }, 1000);
+}
+
+function off() {
+    this.style.display = 'none';
 }

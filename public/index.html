@@ -38,39 +38,41 @@
 </head>
 
 <body>
-  <div class="container logged-out" style="width: 70vw; height: 100vh;">
-    <div class="d-flex flex-column align-items-center justify-content-center" style="height: 80%;">
-      <img class="img-fluid" src="img/logo.jpg" alt="" width="25%" height="25%" />
-
-      <div class="row text-center d-flex  justify-content-center" style="width: 70vw;">
-
-        <div class="col-6 p-3 d-flex flex-column align-items-center" style="border-right: solid 1px lightgrey">
-          <h2 class="mb-5">Play as anonymous</h2>
-          <form action="" id="anony-form">
-            <input type="text" class="form-control form-control-lg mb-4" id="input-username-anony" placeholder="ENTER YOUR NAME"
-              style="width: 20vw;" />
-            <button type="submit" class="btn-index" style="width: 20vw;">
-              LET'S GO!
-            </button>
-          </form>
+  <div class="container-fluid logged-out" id="index-login" >
+      <div class="row text-center d-flex justify-content-center align-items-center" style="height: 85vh;">
+        <div class="row d-flex justify-content-center align-items-center">
+          <div class="col-12">
+            <img class="img-fluid" src="img/logo.jpg" alt="" width="25%"/>
+          </div>
+  
+          <div class="col-lg-5 col-sm-12 p-5" id="play-anony">
+              <h3 class="mb-4">Play as anonymous</h3>
+              <form action="" id="anony-form">
+                <input type="text" class="form-control form-control-lg mb-4" id="input-username-anony" placeholder="ENTER YOUR NAME"
+                   />
+                <button type="submit" class="btn-index btn-block ">
+                  LET'S GO!
+                </button>
+              </form> 
+          </div>
+  
+          <div class="col-lg-5 col-sm-12 p-5">
+              <h3 class="mb-4">Play with your account</h3>
+              <button type="button" class="btn-index btn-block" data-bs-toggle="modal"
+                data-bs-target="#modal-login">
+                LOGIN
+              </button>
+              <br>
+              <p style="font-weight: 600;">Don't have an account? 
+              <a href="#" class="btn-game" style="padding: 0 5px; background-color: transparent; color:#8c52ff; font-size: 1.6rem;"
+                data-bs-toggle="modal" data-bs-target="#modal-signup">
+                SIGN UP
+            </a> </p>        
+          </div>
         </div>
-
-        <div class="col-6 p-3">
-          <h2 class="mb-5">Play with your account</h2>
-          <button type="button" class="btn-index mb-4" style="width: 20vw;" data-bs-toggle="modal"
-            data-bs-target="#modal-login">
-            LOGIN
-          </button>
-          <br>
-          <span style="font-weight: 600;">Don't have an account? </span>
-          <a href="#" class="btn-game" style="padding: 0 10px; background-color: transparent; color:#8c52ff; font-size: 1.1vw;"
-            data-bs-toggle="modal" data-bs-target="#modal-signup">
-            SIGN UP
-        </a>
-        </div>
+        
 
       </div>
-    </div>
   </div>
 
   <div class="modal" id="modal-login" tabindex="-1">
@@ -138,10 +140,7 @@
       </a>
       <ul class="nav justify-content-end mb-4">
         <li class="nav-item align-items-end">
-          <a class="nav-link" aria-current="page" href="#">HOW TO PLAY</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">HELP</a>
+          <a class="nav-link" aria-current="page" href="#">HOW TO WIN</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#" id="btnLogout">QUIT</a>
@@ -254,7 +253,7 @@
 
       <div class="" style="margin-bottom: 1.25vw;">
         <div class="player-name-block d-flex flex-column justify-content-center">
-          <div class="font-italic" style="font-weight: 900; font-size: 1.7vw; margin-top: -15px;">PLAYER</div>
+          <div class="font-italic" style="font-weight: 900; font-size: 1.7rem; margin-top: -15px;">PLAYER</div>
           <div class="user-profile-name-b" id="blue"></div>
           <div class="user-profile-name-b" id="green"></div>
           <div class="user-profile-name-b" id="yellow"></div>
@@ -307,28 +306,21 @@
   </div>
   </div>
 
-  <div class="container logged-in deselected-color" style="width: 70vw; height: 100vh;">
-    <div class="d-flex flex-column justify-content-center" style="height: 100%;">
+  <div class="container-fluid logged-in deselected-color" id="join-room-page">
+    <div class="row d-flex flex-column align-items-center justify-content-center" style="height: 100vh;">
 
-      <div class="row mb-5"> 
+      <div class="row mb-4"> 
 
         <div class="collapse show multi-collapse" id="collapseJoinRoom">
-          <h2 class="mb-3">JOIN ROOM</h2>
-
-      
-
+          <h3 class="mb-2">JOIN ROOM</h3>
           <form action="" id="room-form" >
             <div class="form-group row" >
-              <div class="col-9">
+              <div class="col-sm-9 col-12">
                 <input type="text" class="form-control form-control-lg" placeholder="ENTER YOUR ROOM CODE" id="input-room-code"
              />
               </div>
-              <div class="col-3">
-                <button type="submit" class="btn-lg btn-block btn" id="btn-join" style="background-color: #Ffde59;
-                color: black;
-                border-radius: 2rem;
-                font-weight: 900;
-                font-size: 1.5rem;">
+              <div class="col-sm-3 col-12">
+                <button type="submit" class="btn-lg btn-block btn btn-index" id="btn-join" >
                   JOIN
                 </button>
               </div>
@@ -336,58 +328,62 @@
           </form>
         </div>
           
-          <h5 class="mt-1 mb-3" style="font-weight: 600;">Don't have an room code? 
-          <button type="button"  data-bs-toggle="collapse" data-bs-target=".multi-collapse"  aria-expanded="false" aria-controls="collapseJoinRoom collapseExample" class="btn-game" style="text-decoration: underline;padding: 0 10px; background-color: transparent; color:#8c52ff;" id="btn-generate"
+          <p class="mb-3" style="font-weight: 600;">Don't have an room code? 
+          <a href="#"  data-bs-toggle="collapse" data-bs-target=".multi-collapse"  aria-expanded="false" aria-controls="collapseJoinRoom collapseExample" class="btn-game" style="background-color: transparent; color:#8c52ff; text-decoration: underline; font-size:1.6rem;padding: 0 5px;" id="btn-generate"
           >
             GENERATE ROOM CODE
-          </button></h5>
+          </a></p>
 
         <div class="collapse multi-collapse" id="collapseExample">
           <div class="card text-center">
-            <div class="card-body d-flex align-items-center justify-content-center">
-              <p class="pt-1" id="room-code" style="font-weight: 900; font-size: 1.7vw;">ROOM CODE: </p>
-              <button type="button" class="btn-lg ml-5 btn-join" onclick="createRoom()" id="btn-create-room">CREATE ROOM</button>
-            </div>
-          </div>
+            <div class="card-body d-flex align-items-center justify-content-center row">
+                <div class="col-lg-4 col-sm-12">
+                  <p class="pt-1" id="room-code" style="font-weight: 900; font-size: 1.8rem;">ROOM CODE: </p>
+                </div>
+                <div class="col-lg-4 col-sm-12">
+                <button type="button" class="btn-lg btn-join" onclick="createRoom()" id="btn-create-room">CREATE ROOM</button>
+              </div>
+              </div>
+              
           
+          </div>
         </div>
       </div>
  
-      <div class=" row ">
-        <div class="col-12 block-room d-flex align-items-center justify-content-center">
-          <div class="row" id="room-select" style="width: 100%;">
-            <div class="col-7" style="border-right: solid 1px lightgrey">
-              <div class="d-flex flex-column align-items-center justify-content-center">
-                <p class="font-italic" style="font-weight: 900; font-size: 1.7vw;">PICK YOUR COLOR</p>
-                <div class="d-flex">
-                  <button type="button" class="block-circle-color block-blue"
+      <div class="row">
+        <div class="col-lg-12 col-sm-12 block-room d-flex flex-column justify-content-center">
+          <div class="row" id="room-select">
+            <div class="col-lg-7 col-sm-12  p-4" id="pick-color-box">          
+                <div class="row d-flex flex-column align-items-center">
+                  <h3 class="font-italic text-center" style="font-weight: 900;">PICK YOUR COLOR</h3>
+                  <div class="col-lg-8 col-sm-6 d-flex flex-wrap align-items-center justify-content-center">
+                    <button type="button" class="block-circle-color block-blue"
                     onclick="setColor(0)"></button>
-                  <button type="button" class="block-circle-color block-green" 
+                    <button type="button" class="block-circle-color block-green" 
                     onclick="setColor(1)"></button>
-                </div>
-                <div class="d-flex mb-3">
                   <button type="button" class="block-circle-color block-yellow"
                     onclick="setColor(2)"></button>
                   <button type="button" class="block-circle-color block-red"
                     onclick="setColor(3)"></button>
+                  </div>
                 </div>
-              </div>
+           
             </div>
     
-            <div class="col-5 d-flex flex-column align-items-center text-center">
-              <p class="font-italic" style="font-weight: 900; font-size: 1.7vw;">PLAYER</p>
+            <div class="col-lg-5 col-sm-12 d-flex flex-column align-items-center justify-content-center text-center p-4">
+              <h3 class="font-italic" style="font-weight: 900;">PLAYER</h3>
               <div class="user-profile-name" id="blue">Waiting for player...</div>
               <div class="user-profile-name" id="green">Waiting for player...</div>
               <div class="user-profile-name" id="yellow">Waiting for player...</div>
               <div class="user-profile-name" id="red">Waiting for player...</div>
-              <button type="button" class="btn-lg btn mt-4 btn-join" id="btn-start" onclick="goToBoard()">
+              <button type="button" class="btn-lg btn mt-5 btn-join" id="btn-start" onclick="goToBoard()">
                   START
                 </button>
             </div>
           </div>
           
           <div class="row" id="text-plz-join">
-            <div class="col-12">
+            <div class="col-sm-12 col-lg-12">
               <p class="font-italic text-center text-join-page" id="p-plz-join">PLEASE JOIN OR CREATE ROOM</p>
             </div>
           </div>
@@ -404,24 +400,42 @@
   </div>
 
   <div class="overlay" id="overlay-done" >
-    <div class="d-flex flex-column justify-content-center align-items-center">
-      <img src="img/check.png" width="23%" alt="" class="img-fluid mb-4">
-      <h3 class="text-join-page" style="font-weight: 800;">DONE SUCCESS</h3>
+    <div class="d-flex flex-column justify-content-center align-items-center" style="padding: 2.5rem 4rem;">
+      <img src="img/check.png" alt="" class="img-fluid mb-3 mx-auto d-block">
+      <h3 class="text-center text-alert" >DONE SUCCESS</h3>
     </div>
   </div>
 
-  <div class="overlay" id="overlay-place" >
-    <div class="d-flex flex-column justify-content-center align-items-center">
-      <img src="img/warning.png" width="23%" alt="" class="img-fluid mb-4">
-      <h3 class="text-join-page" style="font-weight: 800;">PLACE YOUR PIECE</h3>
+  <div class="overlay" id="overlay-place" onclick="off()">
+    <div class="d-flex flex-column justify-content-center align-items-center" style="padding: 2.5rem;">
+      <img src="img/warning.png" alt="" class="img-fluid mb-3 mx-auto d-block">
+      <h3 class="text-center text-alert">PLACE YOUR PIECE</h3>
     </div>
   </div>
 
-  <div class="overlay" id="overlay-turn" >
-    <div class="d-flex flex-column justify-content-center align-items-center">
-      <img src="img/close.png" width="23%" alt="" class="img-fluid mb-4">
-      <h3 class="text-join-page" style="font-weight: 800;">IT'S NOT YOUR TURN</h3>
+  <div class="overlay" id="overlay-turn" onclick="off()">
+    <div class="d-flex flex-column justify-content-center align-items-center" style="padding: 2.5rem;">
+      <img src="img/close.png" alt="" class="img-fluid mb-3 mx-auto d-block">
+      <h3 class="text-center text-alert">IT'S NOT YOUR TURN</h3>
     </div>
+  </div>
+
+  <div class="overlay-board" id="overlay-board" onclick="off()">
+    <div class="board d-flex flex-column text-center justify-content-center align-items-center h-75" id="ol-board">
+      <h1 class="text-join-page">LEADERBOARD</h1>
+        <ul class="list-group list-group-flush mt-4 mb-5">
+          <li class="list-group-item">
+            <h4 class="text-leaderboard">THE WINNER IS </h4>
+            <h1 class="text-leaderboard mb-4 display-3">👑 PNAME 👑</h1>
+          </li>
+          <li class="list-group-item">  <h4 class="text-leaderboard">PNAME</h4></li>
+          <li class="list-group-item">  <h4 class="text-leaderboard">PNAME</h4></li>
+          <li class="list-group-item">   <h4 class="text-leaderboard">PNAME</h4></li>
+        </ul>
+      
+      <button class="btn-join">PLAY AGAIN</button>
+    </div>
+    
   </div>
 
 
