@@ -311,3 +311,15 @@ function playerList(name, color){
 function closeLeaderBoard() {
     document.getElementById("overlay-board").style.display = "none";
 }
+
+function quitGame(){
+    closeLeaderBoard()
+    if (firebase.auth().currentUser.isAnonymous == false) {
+        firebase.auth().signOut()
+      } else {
+        anonyForm.reset()
+      }
+      location.reload(true)
+      setupUI()
+      
+}

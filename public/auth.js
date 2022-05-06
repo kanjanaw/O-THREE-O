@@ -46,6 +46,7 @@ btnLogout.addEventListener("click", () => {
   } else {
     anonyForm.reset()
   }
+  location.reload(true)
   setupUI()
 });
 
@@ -82,19 +83,6 @@ function loginUser(event) {
   let playerId;
   var playerRef;
 
-  // function initGame() {
-  //   const allPlayersRef = firebase.database().ref('players')
-
-  //   allPlayersRef.on('value', (snapshot) => {
-  //     // fires whenever a change occurs
-  //   })
-
-  //   allPlayersRef.on('child_added', (snapshot) => {
-  //     // fires whenever a new node is added the tree
-  //     const addedPlayer = snapshot.val()
-  //   })
-  // }
-
 function firebaseAuth() {
   firebase.auth().onAuthStateChanged((user) => {
 
@@ -109,12 +97,6 @@ function firebaseAuth() {
       
       // setup UI
       setupUI(user)
-
-      //
-      // getPieceFromFirebase()
-
-      //Begin the game that we are signed in
-      // initGame()
 
     } else {
       // log out

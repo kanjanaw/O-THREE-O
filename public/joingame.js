@@ -14,24 +14,6 @@ circlesColor.forEach((circleColor) => { circleColor.disabled = false; })
 
 var playerColor, indexSetColor = 0
 
-// function setColor(color) {
-//     playerColor = setOfColor[color];
-//     indexSetColor = color;
-   
-//     playerPieces.forEach((playerPiece) => {
-//         playerPiece.style.backgroundColor = setOfColor[color];
-//     })
-
-//     circlesColor.forEach((circleColor) => { circleColor.style.outline = "none"; })
-//     event.currentTarget.style.outline = "10px solid rgba(172, 172, 172, .6)";
-
-//     setName()
-
-//     circlesColor.forEach((circleColor) => { circleColor.disabled = false; })
-//     circlesColor[indexSetColor].disabled = true
-
-//     pushPlayers(color, playerColor)
-// }
 
 function setColor(color) {
     playerColor = setOfColor[color];
