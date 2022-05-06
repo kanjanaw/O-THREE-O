@@ -37,6 +37,7 @@ const btnCancel = document.querySelectorAll(".btn-cancel").forEach((btn) => {
     loginForm.reset();
     loginFeedback.innerHTML = "";
   });
+  
 });
 
 // const btnLogout = document.querySelector("#btnLogout");
