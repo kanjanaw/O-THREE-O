@@ -140,7 +140,7 @@ a, a:link, a.nav-link, a.nav-link:hover, .navbar-light, .navbar-nav, .nav-link, 
     text-align: center;
 }
 .player-name-block{
-  background-color: rgb(52, 52, 52);
+  background-color: rgb(42, 42, 42);
   color: white;
   border-radius: 35px;
   width: 100%;
