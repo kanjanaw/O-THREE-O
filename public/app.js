@@ -24,6 +24,7 @@ function goToBoard() {
     deselectedColor.forEach((item) => (item.style.display = "none"));
     ref.child(roomCode).update({
       currentPlayer:"rgb(109, 187, 255)",
+      gameState : "start"
     });
   } else {
     alert("plz pick your color");

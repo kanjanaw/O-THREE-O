@@ -25,6 +25,7 @@ function createRoom() {
 
   roomRef.set({
     room: roomCode,
+    gameState : "not start"
   });
 
   displayTextJoin();

@@ -1,18 +1,22 @@
 function turnGame(snapshot) {
+  timer("dontRun")
   let curPlayer;
   btnDoneClass.disabled = true;
   playerNamesInGame.forEach(playerNamesInGame => {
       playerNamesInGame.style.opacity = .3
   });
-  ref.child(roomCode).on("value", (snapshot) => {
+  ref.child(roomCode).once("value", (snapshot) => {
     snapshot.forEach((data) => {
       curPlayer = snapshot.val().currentPlayer;
+      curState = snapshot.val().gameState
     });
-    if (playerColor == curPlayer) {
+    if (playerColor == curPlayer && curState == "start") {
       btnDoneClass.disabled = false;
       playerNamesInGame[indexSetColor].style.opacity = 1;
+      timer("run")
     } 
     else{
+      timer("not run")
       if(curPlayer == "rgb(109, 187, 255)"){
         playerNamesInGame[0].style.opacity = 1;
       }
