@@ -39,16 +39,16 @@ const btnCancel = document.querySelectorAll(".btn-cancel").forEach((btn) => {
   });
 });
 
-const btnLogout = document.querySelector("#btnLogout");
-btnLogout.addEventListener("click", () => {
-  if (firebase.auth().currentUser.isAnonymous == false) {
-    firebase.auth().signOut()
-  } else {
-    anonyForm.reset()
-  }
-  location.reload(true)
-  setupUI()
-});
+// const btnLogout = document.querySelector("#btnLogout");
+// btnLogout.addEventListener("click", () => {
+//   if (firebase.auth().currentUser.isAnonymous == false) {
+//     firebase.auth().signOut()
+//   } else {
+//     anonyForm.reset()
+//   }
+//   location.reload(true)
+//   setupUI()
+// });
 
 
 //login
