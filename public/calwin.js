@@ -291,6 +291,9 @@ function alertWinner(){
             }
         })
     })
+    ref.child(roomCode).update({
+        gameState : "not start"
+    })
 }
 
 const leaderBoardName = document.getElementsByClassName('text-leaderboard')
