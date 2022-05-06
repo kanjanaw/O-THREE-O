@@ -19,6 +19,7 @@ function timer(state) {
     else if (time <= 9 && time >= 0) {
         id.innerHTML = "00:0"+time;
         console.log(time);
+        
     }
     else if(time < 0){
       id.innerHTML = "00:00";
