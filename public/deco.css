@@ -310,7 +310,10 @@ a, a:link, a.nav-link, a.nav-link:hover, .navbar-light, .navbar-nav, .nav-link, 
   position: relative;
 }
 
-#overlay-done, #overlay-place, #overlay-turn, #overlay-board{
+#overlay-done,    
+#overlay-place, 
+#overlay-turn, 
+#overlay-board{
   display: none;
 }
 
@@ -369,22 +372,6 @@ a, a:link, a.nav-link, a.nav-link:hover, .navbar-light, .navbar-nav, .nav-link, 
   height: auto;
   width: 45%;
 }
-
-.closebtn {
-  position: absolute;
-  top: 15px;
-  right: 30px;
-  color: red;
-  font-weight: bold;
-  font-size: 2.25rem;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.closebtn:hover {
-  color: black;
-}
-
 
 
 @media screen and (max-width: 992px) {
