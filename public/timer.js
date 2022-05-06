@@ -4,6 +4,10 @@ var playerTime
 //   curPlayer = snapshot.val().currentPlayer;
 // });
 function timer(state) {
+  let curPlayer;
+    ref.child(roomCode).once("value", (snapshot) => {
+      curPlayer = snapshot.val().currentPlayer;
+    });
   var time = 31;
   if(state == "run"){
   playerTime = setInterval(function () {
@@ -17,8 +21,25 @@ function timer(state) {
         console.log(time);
     }
     else if(time == 0){
+      id.innerHTML = "00:00";
       alert("time out")
-      
+      if (curPlayer == "rgb(109, 187, 255)") {
+        ref.child(roomCode).update({
+          currentPlayer: "rgb(25, 212, 184)",
+        });
+      } else if (curPlayer == "rgb(25, 212, 184)") {
+        ref.child(roomCode).update({
+          currentPlayer: "rgb(255, 222, 89)",
+        });
+      } else if (curPlayer == "rgb(255, 222, 89)") {
+        ref.child(roomCode).update({
+          currentPlayer: "rgb(255, 109, 109)",
+        });
+      } else if (curPlayer == "rgb(255, 109, 109)") {
+        ref.child(roomCode).update({
+          currentPlayer: "rgb(109, 187, 255)",
+        });
+      }
     }
   }, 1000);}
   else{
@@ -26,6 +47,3 @@ function timer(state) {
     clearInterval(playerTime)
   }
 }
-// if (playerColor == curPlayer) {
-// timer()
-// }
