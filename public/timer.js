@@ -16,11 +16,11 @@ function timer(state) {
       id.innerHTML = "00:"+time;
       console.log(time);
     }
-    else if (time <= 9 && time > 0) {
+    else if (time <= 9 && time >= 0) {
         id.innerHTML = "00:0"+time;
         console.log(time);
     }
-    else if(time == 0){
+    else if(time < 0){
       id.innerHTML = "00:00";
       notYourTurn();
       if (curPlayer == "rgb(109, 187, 255)") {
