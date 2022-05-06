@@ -23,7 +23,7 @@ function setColor(color) {
         playerPiece.style.backgroundColor = setOfColor[color];
     })
 
-    circlesColor.forEach((circleColor) => { circleColor.disabled = false; })
+    circlesColor.forEach((circleColor) => { circleColor.removeAttribute("onclick")})
     circlesColor[indexSetColor].disabled = true
 
     pushPlayers(color, playerColor)
