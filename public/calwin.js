@@ -307,3 +307,7 @@ function playerList(name, color){
     leaderBoardName[index].style.color = color
     index++
 }
+
+function closeLeaderBoard() {
+    document.getElementById("overlay-board").style.display = "none";
+}
