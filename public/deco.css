@@ -318,6 +318,10 @@ a, a:link, a.nav-link, a.nav-link:hover, .navbar-light, .navbar-nav, .nav-link, 
   font-weight: 800;
 }
 
+.text-yellow{
+  color: #Ffde59;
+}
+
 #ol-board{
   width: 65%;
   height: 75%;
@@ -336,6 +340,18 @@ a, a:link, a.nav-link, a.nav-link:hover, .navbar-light, .navbar-nav, .nav-link, 
 
 #gp-right-side{
   width: 36%;
+}
+
+.text-wins{
+  font-weight: 800;
+  background-color: rgb(52, 52, 52);
+  color: #ffde59;
+  padding: .5rem 4rem;
+  border-radius: 25px;
+  text-align: center;
+}
+.line-bottom{
+  border-bottom: solid 1px lightgrey;
 }
 
 @media screen and (max-width: 992px) {
