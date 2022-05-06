@@ -153,8 +153,8 @@
     </nav>
 
 
-  <div class="row d-flex justify-content-between w-100 h-100">
-    <div class="p-0" id="gp-left-side" >
+  <div class="row" id="game-content">
+    <div class="mb-3" id="gp-left-side" >
       <div class="boardgame">
         <div class="boardgame-item-L boardgame-pieces" id="L11">
           <div class="boardgame-item-block-L">
@@ -248,14 +248,14 @@
 
       </div>
     </div>
-    <div class="p-0 row" id="gp-right-side">
-        <div class="time-block mb-3 col-12">
-          <p style="font-size: 4vw;" id="timer">00:00</p>
+    <div class="pb-5" id="gp-right-side">
+        <div class="time-block mb-3 col-12" id="timer-bar">
+          <p id="timer">00:00</p>
         </div>
   
 
       
-      <div class="col-12 mb-3 player-name-block d-flex flex-column justify-content-center">
+      <div class="col-12 mb-3 player-name-block d-flex flex-column justify-content-center" id="player-list">
           <h3 class="font-italic" style="font-weight: 900;">PLAYER</h3>
           <h4 class="user-profile-name-b" id="blue"></h4>
           <h4 class="user-profile-name-b" id="green"></h4>
@@ -265,7 +265,7 @@
   
 
      
-          <div class="col-12 piece-block mb-3">
+          <div class="col-12 piece-block mb-3" id="player-piece-box">
             <div class="boardgame-item-L player-pieces" id="P-L11">
               <div class="boardgame-item-block-L">
                 <div class="boardgame-item-M player-pieces" id="P-M11">
@@ -299,7 +299,7 @@
      
 
       
-        <button type="button" class="btn-game btn-block" id="btn-done"><i class="fi fi-br-check"></i>
+        <button type="button" class="btn-game btn-block mb-3" id="btn-done"><i class="fi fi-br-check"></i>
           DONE!</button>
    
 
@@ -377,7 +377,7 @@
               <h4 class="user-profile-name" id="green">Waiting for player...</h4>
               <h4 class="user-profile-name" id="yellow">Waiting for player...</h4>
               <h4 class="user-profile-name" id="red">Waiting for player...</h4>
-              <button type="button" class="btn-lg btn mt-5 btn-join" id="btn-start" onclick="goToBoard()">
+              <button type="button" class="btn-lg btn mt-4 mb-5 btn-join" id="btn-start" onclick="goToBoard()">
                   START
                 </button>
             </div>
