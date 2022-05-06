@@ -324,5 +324,4 @@ function quitGame(){
       }
       location.reload(true)
       setupUI()
-      
 }
