@@ -22,7 +22,7 @@ function timer(state) {
     }
     else if(time == 0){
       id.innerHTML = "00:00";
-      alert("time out")
+      notYourTurn();
       if (curPlayer == "rgb(109, 187, 255)") {
         ref.child(roomCode).update({
           currentPlayer: "rgb(25, 212, 184)",
